@@ -1,0 +1,15 @@
+<apex:page showHeader="false" controller="WebToLeadController">
+
+<apex:outputPanel id="form">
+  <apex:include pageName="webToLeadForm"
+                id="webToLeadForm"
+                rendered="{! !successValue}"/>
+</apex:outputPanel>
+
+<apex:outputPanel id="thanks">
+<apex:include pageName="Thanks"
+              id="ThanksP"
+              rendered="{!successValue}"/>
+</apex:outputPanel> 
+
+</apex:page>

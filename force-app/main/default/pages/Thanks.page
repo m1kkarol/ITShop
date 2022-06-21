@@ -1,0 +1,61 @@
+<apex:page showHeader="false" id="webToLeadForm">
+
+<apex:slds />
+<style>
+
+html{
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: cover; 
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    height: 100%;
+    background-image: url('/webtolead/resource/1655045370000/webToLeadBackground');
+}
+.form{ 
+    width:350px;
+    height:180px;
+    background:#e6e6e6;
+    border-radius:8px;
+    box-shadow:0 0 40px -10px #000;
+    margin:calc(65vh - 220px) auto;
+    padding:20px 30px;
+    max-width:calc(100vw - 40px);
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+    position:relative;
+    opacity: 0.8;
+}
+.cont{
+  margin:10px 0;
+  padding-bottom:10px;
+  width:100%;
+  color:#78788c;
+  border-bottom:3px solid black;
+  align-items: center;
+
+}
+</style>
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com"></link>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap" rel="stylesheet"></link>
+
+
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="form" id="form" onsubmit="return validateForm()"> 
+    
+    <input type="hidden" name="oid" value="00D7Q000006G5Do"/>
+    <input type="hidden" name="retURL" value="http://karolbrite-developer-edition.eu44.force.com?success=true"/> 
+   
+    <h2 class="cont" style="font-size: 45px;">THANK YOU</h2>
+    <h2 style="font-size: 25px"> We will contact with you! </h2>
+
+ 
+        
+
+    </form> 
+
+    
+</apex:page>
