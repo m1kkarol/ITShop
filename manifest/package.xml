@@ -11,5 +11,9 @@
 		<members>webtolead</members>
 		<name>ApexPage</name>
 	</types>
+	<types>
+		<members>webToLeadBackground</members>
+		<name>StaticResource</name>
+	</types>
 	<version>53.0</version>
-</Package> 
+</Package>
