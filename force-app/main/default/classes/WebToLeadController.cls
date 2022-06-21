@@ -10,7 +10,7 @@ public with sharing class WebToLeadController {
         try{
             return successValue = Boolean.valueOf(ApexPages.currentPage().getParameters().get('success'));
         }catch(Exception e){
-            return false;  
+            return false;
         }
     }
 }
