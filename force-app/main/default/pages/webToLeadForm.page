@@ -1,0 +1,183 @@
+<apex:page showHeader="false" id="webToLeadForm">
+
+<apex:slds />
+<style>
+
+html{
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: cover; 
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    height: 100%;
+    background-image: url('/webtolead/resource/1655045370000/webToLeadBackground');
+}
+.form{ 
+    width:340px;
+    height:560px;
+    background:#e6e6e6;
+    border-radius:8px;
+    box-shadow:0 0 40px -10px #000;
+    margin:calc(35vh - 220px) auto;
+    padding:20px 30px;
+    max-width:calc(100vw - 40px);
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+    position:relative;
+    opacity: 0.8;
+}
+.input{
+  width:100%;
+  padding:10px;
+  box-sizing:border-box;
+  background:none;
+  outline:none;
+  resize:none;
+  border:0;
+  transition:all .3s;
+  border-bottom:2px solid #bebed2
+}
+ 
+input:focus{
+    border-bottom: 2px solid #A3623A; 
+}
+.submit{
+  float:right;
+  padding:8px 20px;
+  margin-top: 8px !important; 
+  border:2px solid #78788c;
+  background:0;
+  color:#5a5a6e;
+  cursor:pointer;
+  transition:all .3s
+}
+.submit:hover{
+  background:#78788;
+  color:#A3623A;
+  border: 2px solid #A3623A;
+  border-radius: 8px;
+}
+.cont{
+  margin:10px 0;
+  padding-bottom:10px;
+  width:180px;
+  color:#78788c;
+  border-bottom:3px solid #A3623A;
+
+}
+p:before{
+  content:attr(type);
+  display:block;
+  margin:14px 0 0;
+  font-size:14px;
+  color:#5a5a5a
+}
+
+label{
+    font-size: 14px;
+
+}
+p{
+  font-weight: bold;
+}
+</style>
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com"></link>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap" rel="stylesheet"></link>
+
+
+<div style="display: flex; align-items: center; justify-content: center; margin-top:50px" id="toast">
+  <div style="position:absolute">
+      <div class="slds-notify_container slds-is-relative">
+          <div class="slds-notify slds-notify_toast slds-theme_error slds-hide" role="status"
+               id="errorToast">
+              <span class="slds-assistive-text">error </span>
+              <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top"
+                    title="Description of icon when needed">
+               <svg class="slds-icon slds-icon_small" xmlns:xlink="http://www.w3.org/2001/XMLSchema-instance"
+                    aria-hidden="true">
+                    <use xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#error')}"></use>
+                  </svg>
+              </span>
+              <apex:outputPanel id="toast">
+                  <div class="slds-notify__content" id="toastMsg">
+                      <p style="font-weight: 400 !important;" id="toastMsgp" class="slds-text-heading_small"> </p>
+                  </div>
+              </apex:outputPanel>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="form" id="form" onsubmit="return validateForm()"> 
+    
+    <input type="hidden" name="oid" value="00D7Q000006G5Do"/>
+    <input type="hidden" name="retURL" value="http://karolbrite-developer-edition.eu44.force.com?success=true"/> 
+   
+    
+    <h2 class="cont" style="font-size:25px;">CONTACT US</h2>
+
+        <p type="First Name: *"></p><input class="input" id="first_name" maxlength="40" name="first_name" size="20" type="text" required="true"/><br/>
+        
+        <p type="Last Name: *"></p><input  class="input" id="last_name" maxlength="80" name="last_name" size="20" type="text" required="true"/><br/>
+    
+        <p type="Email: *"></p><input   class="input" type="email" id="email" maxlength="80" name="email" size="20" required="true"/><br/>
+    
+        <p type="Company: *"></p><input   class="input" id="company" maxlength="40" name="company" size="20" type="text" required="true"/><br/>
+    
+        <p type="City: *"></p><input  class="input" id="city" maxlength="40" name="city" size="20" type="text" required="true"/><br/>
+    
+        <p type="State/Province: *"></p><input  class="input" id="state" maxlength="20" name="state" size="20" type="text" required="true"/><br/> 
+    
+      
+        <input class="submit" type="submit" value="Submit" />
+ 
+        
+
+    </form> 
+
+    <script type='text/javascript'>
+        function validateForm(){
+          const formMessage = form.querySelector(".form-message");
+          let firstName = document.forms["form"]["first_name"].value;
+          let lastName = document.forms["form"]["last_name"].value;
+          let city = document.forms["form"]["city"].value;
+          var regName =   /^[a-zA-Z]+$/;
+          let messageWrap = document.getElementById('errorToast');
+          let successToast = document.getElementById('successToast');
+          let message =  document.getElementById('toastMsgp');
+          let sucMsg = document.getElementById('toastMsgs');
+     
+
+          if((!regName.test(firstName)) || (!regName.test(lastName))){
+            messageWrap.classList.toggle("slds-hide");
+            message.innerHTML = `<h3>Invalid First Name or Last Name given</h3>`;
+            setTimeout(function(){
+              messageWrap.classList.toggle("slds-hide");
+            }, 2000);
+            return false;
+          }
+          if(firstName.length < 3){
+            messageWrap.classList.toggle("slds-hide");
+            message.innerHTML = `<h3>Name must have at least 3 character</h3>`;
+            setTimeout(function(){
+              messageWrap.classList.toggle("slds-hide");
+            }, 2000);
+            return false;
+
+          } 
+          if(!regName.test(city)){        
+            messageWrap.classList.toggle("slds-hide");
+            message.innerHTML = `<h3>Invalid City given</h3>`;
+            setTimeout(function(){
+              messageWrap.classList.toggle("slds-hide");
+            }, 2000);
+            return false;
+          }        
+        }
+    </script>
+</apex:page>
