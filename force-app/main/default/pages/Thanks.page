@@ -11,7 +11,7 @@ html{
     -moz-background-size:cover;
     -o-background-size:cover;
     height: 100%;
-    background-image: url('/webtolead/resource/1655045370000/webToLeadBackground');
+    background-image: url('https://images.unsplash.com/photo-1654778747238-12314fb5a4aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
 }
 .form{ 
     width:350px;
