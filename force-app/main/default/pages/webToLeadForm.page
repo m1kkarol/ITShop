@@ -25,7 +25,7 @@ html{
     box-sizing:border-box;
     font-family:'Montserrat',sans-serif;
     position:relative;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 .input{
   width:100%;
