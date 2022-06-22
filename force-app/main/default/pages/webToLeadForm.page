@@ -110,7 +110,7 @@ p{
 
           </div>
       </div>
-  </div>
+  </div> 
 </div>
 
     <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="form" id="form" onsubmit="return validateForm()"> 
