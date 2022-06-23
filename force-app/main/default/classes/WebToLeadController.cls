@@ -5,6 +5,7 @@ public with sharing class WebToLeadController {
     public WebToLeadController() {
         Boolean successValue = showPage();
     }
+
     public static Boolean showPage(){
         try{
             return successValue = Boolean.valueOf(ApexPages.currentPage().getParameters().get('success'));
@@ -12,4 +13,4 @@ public with sharing class WebToLeadController {
             return false;
         }
     }
-} 
+}
