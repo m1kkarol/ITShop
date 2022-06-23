@@ -1,4 +1,4 @@
-<apex:page showHeader="false" id="webToLeadForm" controller="WebToLeadFormController">
+<apex:page showHeader="false" id="webToLeadForm">
 
 <apex:slds />
 <style>
@@ -11,7 +11,7 @@ html{
     -moz-background-size:cover;
     -o-background-size:cover;
     height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1654778747238-12314fb5a4aa?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80');
+    background-image: url('/webtolead/resource/1655045370000/webToLeadBackground');
 }
 .form{ 
     width:340px;
@@ -25,7 +25,7 @@ html{
     box-sizing:border-box;
     font-family:'Montserrat',sans-serif;
     position:relative;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 .input{
   width:100%;
@@ -110,7 +110,7 @@ p{
 
           </div>
       </div>
-  </div> 
+  </div>
 </div>
 
     <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="form" id="form" onsubmit="return validateForm()"> 
