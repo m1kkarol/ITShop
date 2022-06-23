@@ -116,7 +116,8 @@ p{
     <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="form" id="form" onsubmit="return validateForm()"> 
     
     <input type="hidden" name="oid" value="00D7Q000008L8Oq"/>
-    <input type="hidden" name="retURL" value="https://britenet-c7-dev-ed.my.salesforce-sites.com/webtolead?success=true"/> 
+    <input type="hidden" name="retURL" value="https://britenet-c7-dev-ed.my.salesforce-sites.com/webtolead?success=true"/>  
+
    
     
     <h2 class="cont" style="font-size:25px;">CONTACT US</h2>
