@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html> 
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initialscale=1.0" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <style type="text/css">@media screen and (max-width: 480px) {slot[style] {margin-right: 0 !important;}.columnDiv {margin-right: 0 !important;}}@media screen and (min-width: 480px) {slot[style] {margin-bottom: 0 !important;}.columnDiv {margin-bottom: 0 !important;}}</style> 
+  <style type="text/css">@media screen and (max-width: 480px) {.contentbuilderBaseColumnRow .columnCell {display:inline-block;width:100%}}</style> 
+  <style type="text/css">.contentpageDefaultEmailTemplatePageTemplate .contentRoot {width: 600px;}@media only screen and (max-width: 480px) {.contentpageDefaultEmailTemplatePageTemplate .contentRoot {width: 320px;}}</style> 
+ </head> 
+ <body> 
+  <table class="contentpageDefaultEmailTemplatePageTemplate" style="background-color: #E9EAEC;background-image: url({[devName:roomwithblurredseats]});background-position: center;background-size: cover;background-repeat: no-repeat;" role="presentation" id="contentpage_emailTemplateBodyContent" width="100%" cellpadding="0" cellspacing="0"> 
+   <tbody> 
+    <tr> 
+     <td width="100%" align="center"> 
+      <table class="contentRoot" style="background-color: #FFFFFF;" role="presentation" width="600" cellpadding="0" cellspacing="0"> 
+       <tbody> 
+        <tr> 
+         <td style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;"> 
+          <table class="contentbuilderBaseColumnRow" style="background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0"> 
+           <tbody> 
+            <tr valign="top"> 
+             <td width="100%" class="columnCell" style="vertical-align: top;display: inline-block"> 
+              <table style="width: 100%; border-collapse: collapse; word-break:break-word;"> 
+               <tbody> 
+                <tr> 
+                 <td> 
+                  <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="Center"><img style="width: 100%; display: block; border: none; max-width: 40%;" src="{[devName:Header_Email]}" alt="" width="240" /></td> 
+                    </tr> 
+                   </tbody> 
+                  </table></td> 
+                </tr> 
+                <tr> 
+                 <td> 
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="font-family: Arial, Helvetica, sans-serif;padding-top: 25px;"> 
+                      <div style="text-align: center;"> <span style="font-family:Trebuchet MS,Arial,Helvetica,sans-serif;"><span style="font-size:28px;">Hello!</span></span> 
+                      </div></td> 
+                    </tr> 
+                   </tbody> 
+                  </table></td> 
+                </tr> 
+               </tbody> 
+              </table></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table class="contentbuilderBaseColumnRow" style="background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0"> 
+           <tbody> 
+            <tr valign="top"> 
+             <td width="100%" class="columnCell" style="vertical-align: top;display: inline-block"> 
+              <table style="width: 100%; border-collapse: collapse; word-break:break-word;"> 
+               <tbody> 
+                <tr> 
+                 <td> 
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="font-family: Arial, Helvetica, sans-serif;padding-top: 25px;padding-bottom: 18px;"> 
+                      <div style="text-align: center;"> <span style="font-family:Trebuchet MS,Arial,Helvetica,sans-serif;">We're super excited to see you join the ITShop community.&nbsp;<br /> Our goal is to offer the widest range at highest quality.<br /><br /><u><span style="color:#c0392b;"><span style="font-size:22px;"><strong>Check our new products!</strong></span></span></u></span> 
+                      </div></td> 
+                    </tr> 
+                   </tbody> 
+                  </table></td> 
+                </tr> 
+               </tbody> 
+              </table></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table class="contentbuilderBaseColumnRow" style="background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0"> 
+           <tbody> 
+            <tr valign="top"> 
+             <td width="50%" class="columnCell" style="vertical-align: top;display: inline-block"> 
+              <div class="columnDiv" style="margin-right: 5px;margin-bottom: 5px;"> 
+               <table style="width: 100%; border-collapse: collapse; word-break:break-word;"> 
+                <tbody> 
+                 <tr> 
+                  <td> 
+                   <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="1"> 
+                    <tbody> 
+                     <tr> 
+                      <td style="padding-right: 10px;" align="Center"><img style="width: 100%; display: block; border: none; max-width: 100%;" src="{[devName:prod11]}" alt="" width="285" /></td> 
+                     </tr> 
+                    </tbody> 
+                   </table></td> 
+                 </tr> 
+                 <tr> 
+                  <td> 
+                   <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                    <tbody> 
+                     <tr> 
+                      <td style="font-family: Arial, Helvetica, sans-serif;padding-top: 10px;"> 
+                       <div style="text-align: center;"> <span style="font-family:Trebuchet MS,Arial,Helvetica,sans-serif;"><strong><span style="font-size:18px;">Motherboard MSI B550-A PRO</span>&nbsp;</strong><br /> Format: ATX<br /> Socket: AM4<br /> Chispet: AMD B550<br /><span style="color:#16a085;"><span style="font-size:20px;"><strong>120€</strong></span></span></span> 
+                        <br /> &nbsp; 
+                       </div></td> 
+                     </tr> 
+                    </tbody> 
+                   </table></td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div></td> 
+             <td width="50%" class="columnCell" style="vertical-align: top;display: inline-block"> 
+              <table style="width: 100%; border-collapse: collapse; word-break:break-word;"> 
+               <tbody> 
+                <tr> 
+                 <td> 
+                  <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="padding-right: 10px;padding-left: 10px;" align="Center"><img style="width: 100%; display: block; border: none; max-width: 88%;" src="{[devName:prod21]}" alt="" width="244" /></td> 
+                    </tr> 
+                   </tbody> 
+                  </table></td> 
+                </tr> 
+                <tr> 
+                 <td> 
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="font-family: Arial, Helvetica, sans-serif;padding-top: 10px;"> 
+                      <div style="text-align: center;"> <span style="font-family:Trebuchet MS,Arial,Helvetica,sans-serif;"><span style="font-size:18px;"><strong>Motherboard ASUS TUF B550-Plus</strong></span><br /> Format: ATX<br /> Socket: AM4<br /> Chispet: AMD B550<br /><span style="color:#16a085;"><span style="font-size:20px;"><strong>110€</strong></span></span></span> 
+                      </div></td> 
+                    </tr> 
+                   </tbody> 
+                  </table></td> 
+                </tr> 
+               </tbody> 
+              </table></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table class="contentbuilderBaseColumnRow" style="background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0"> 
+           <tbody> 
+            <tr valign="top"> 
+             <td width="50%" class="columnCell" style="vertical-align: top;display: inline-block"> 
+              <div class="columnDiv" style="margin-right: 5px;margin-bottom: 5px;"> 
+               <table style="width: 100%; border-collapse: collapse; word-break:break-word;"> 
+                <tbody> 
+                 <tr> 
+                  <td> 
+                   <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                    <tbody> 
+                     <tr> 
+                      <td style="padding-top: 10px;padding-right: 10px;padding-bottom: 10px;" align="Center"><img style="width: 100%; display: block; border: none; max-width: 75%;" src="{[devName:prod31]}" alt="" width="211" /></td> 
+                     </tr> 
+                    </tbody> 
+                   </table></td> 
+                 </tr> 
+                 <tr> 
+                  <td> 
+                   <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                    <tbody> 
+                     <tr> 
+                      <td style="font-family: Arial, Helvetica, sans-serif;padding-top: 10px;"> 
+                       <div style="text-align: center;"> <span style="font-family:Trebuchet MS,Arial,Helvetica,sans-serif;"><strong><span style="font-size:18px;">MSI GeForce RTX 3070</span></strong><br /> GDDR 6X<br /> 8GB<br /><strong><span style="color:#16a085;"><span style="font-size:18px;">820€</span></span></strong></span> 
+                        <br /> &nbsp; 
+                       </div></td> 
+                     </tr> 
+                    </tbody> 
+                   </table></td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div></td> 
+             <td width="50%" class="columnCell" style="vertical-align: top;display: inline-block"> 
+              <table style="width: 100%; border-collapse: collapse; word-break:break-word;"> 
+               <tbody> 
+                <tr> 
+                 <td> 
+                  <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="padding-top: 10px;padding-right: 10px;padding-left: 10px;" align="Center"><img style="width: 100%; display: block; border: none; max-width: 91%;" src="{[devName:prod4]}" alt="" width="253" /></td> 
+                    </tr> 
+                   </tbody> 
+                  </table></td> 
+                </tr> 
+                <tr> 
+                 <td> 
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="font-family: Arial, Helvetica, sans-serif;padding-top: 10px;"> 
+                      <div style="text-align: center;"> <span style="font-family:Trebuchet MS,Arial,Helvetica,sans-serif;"><span style="font-size:18px;"><strong>MSI GeForce RTX 3060 TI Ventus</strong></span><br /> GDDR 6<br /> 8GB<br /><strong><span style="color:#16a085;"><span style="font-size:20px;">520€</span></span></strong></span> 
+                      </div></td> 
+                    </tr> 
+                   </tbody> 
+                  </table></td> 
+                </tr> 
+               </tbody> 
+              </table></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table class="contentbuilderBaseColumnRow" style="background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0"> 
+           <tbody> 
+            <tr valign="top"> 
+             <td width="100%" class="columnCell" style="vertical-align: top;display: inline-block"> 
+              <table style="width: 100%; border-collapse: collapse; word-break:break-word;"> 
+               <tbody> 
+                <tr> 
+                 <td> 
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="font-family: Arial, Helvetica, sans-serif;padding-top: 25px;"> 
+                      <div style="text-align: center;"> <span style="font-size:20px;"><span style="font-family:Trebuchet MS,Arial,Helvetica,sans-serif;">Interested?</span></span> 
+                       <br /><font face="Trebuchet MS, Arial, Helvetica, sans-serif">Visit our </font><a href="https://google.com"><font face="Trebuchet MS, Arial, Helvetica, sans-serif">website</font></a><font face="Trebuchet MS, Arial, Helvetica, sans-serif">&nbsp;to search for more!</font> 
+                      </div></td> 
+                    </tr> 
+                   </tbody> 
+                  </table></td> 
+                </tr> 
+               </tbody> 
+              </table></td> 
+            </tr> 
+           </tbody> 
+          </table></td> 
+        </tr> 
+       </tbody> 
+      </table></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </body>
+</html>

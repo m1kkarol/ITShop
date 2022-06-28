@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email with new Products for Lead CLONE</name>
+    <pageDevName>Email_with_new_Products_for_Lead_CLONE</pageDevName>
+    <relatedEntityType>Lead</relatedEntityType>
+    <style>none</style>
+    <subject>Check our new products!</subject>
+    <textOnly>Hello!
+
+We&apos;re super excited to see you join the ITShop community. 
+
+Our goal is to offer the widest range at highest quality.
+
+Check our new products!
+
+Motherboard MSI B550-A PRO
+
+Format: ATX
+
+Socket: AM4
+
+Chispet: AMD B550
+
+120€
+
+Motherboard ASUS TUF B550-Plus
+
+Format: ATX
+
+Socket: AM4
+
+Chispet: AMD B550
+
+110€
+
+MSI GeForce RTX 3070
+
+GDDR 6X
+
+8GB
+
+820€
+
+MSI GeForce RTX 3060 TI Ventus
+
+GDDR 6
+
+8GB
+
+520€
+
+Interested?
+
+Visit our website &lt; https://google.com &gt; to search for more!</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>
