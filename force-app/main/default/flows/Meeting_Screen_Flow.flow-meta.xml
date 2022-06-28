@@ -324,7 +324,7 @@
             <targetReference>Get_Lead</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>New_Meeting</name>
         <dataType>SObject</dataType>
