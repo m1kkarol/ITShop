@@ -20,10 +20,10 @@
 	<types>
 		<members>Lead</members>
 		<name>Workflow</name> 
-		
+
 	</types>
 	<types>
-		<members>Lead.Lead_Email</members>
+		<members>*</members>
 		<name>WorkflowAlert</name>
 	</types>
 	<version>53.0</version>
