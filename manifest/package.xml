@@ -15,6 +15,10 @@
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
+		<members>Product2</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
 		<members>editProduct</members>
 		<members>newProduct</members>
 		<members>previewFileThumbnailCard</members>
