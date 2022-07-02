@@ -25,6 +25,7 @@ export default class EditProduct extends LightningElement {
     prodBrand = PROD_BRAND;
     prodName = NAME_FIELD;
     prodCode = PROD_CODE;
+    productName;
     price;
     @api recordId;
     isLoaded = true;
@@ -71,6 +72,10 @@ export default class EditProduct extends LightningElement {
         this.price = event.target.value;
     }
 
+    handleProdName(event) {
+        this.productName = event.target.value;
+    }
+
     handleSuccess(event){
         if(this.price == undefined) {
             const event = new ShowToastEvent({
@@ -86,8 +91,8 @@ export default class EditProduct extends LightningElement {
                 if(result == true){
                     
                     const evt = new ShowToastEvent({
-                        title: 'Product created',
-                        message: 'Product Name:',
+                        title: 'Product successfully edited',
+                        message: 'Product Name: ' + this.productName, 
                         variant: 'success' ,
                     });
                     this.dispatchEvent(evt);
