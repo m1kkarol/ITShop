@@ -12,10 +12,6 @@
 		<name>ApexClass</name>
 	</types>
 	<types>
-		<members>Optimized_Product_Page</members>
-		<name>FlexiPage</name>
-	</types>
-	<types>
 		<members>editProduct</members>
 		<members>newProduct</members>
 		<members>previewFileThumbnailCard</members>
