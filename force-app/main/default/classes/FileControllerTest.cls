@@ -15,5 +15,5 @@ public with sharing class FileControllerTest {
         
         ContentDocument conDoc = new ContentDocument();
         FileController.deleteImg(conDoc.Id);
-    }
+    } 
 }
