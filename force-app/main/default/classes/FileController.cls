@@ -27,4 +27,5 @@ public with sharing class FileController{
             delete [SELECT Id FROM ContentDocument WHERE Id =: imgId LIMIT 1];
             
         }
+
     }

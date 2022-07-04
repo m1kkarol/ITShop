@@ -1,7 +1,12 @@
 <template>
-    <template if:true={file}>
-
-      <li
+    <template if:true={file.ifProfile}>
+        <c-preview-file-modal 
+        url={file.downloadUrl} 
+        file-extension={file.Extension} >
+  
+      </c-preview-file-modal>
+     <lightning-card>
+        <li
         class="
           slds-col
           slds-var-p-vertical_x-small
@@ -10,10 +15,10 @@
           slds-large-size_1-of-6
         "
       >
-        <div class="slds-file slds-file_card slds-has-title" style="width: 14rem">
+        <div class="slds-file slds-file_card slds-has-title" style="width: 21rem" onclick={filePreview}>
           <figure>
             <a class="slds-file__crop slds-file__crop_4-by-3 slds-m-top_x-small" >
-              <img src={thumbnail} alt={file.title} />
+              <img src={file.thumbnailFileCard} alt={file.title} />
             </a>
             <figcaption class="slds-file__title slds-file__title_card">
               <div class="slds-media slds-media_small slds-media_center" >
@@ -29,32 +34,13 @@
                 </lightning-icon>
                 <div class="slds-media__body slds-var-p-left_xx-small" >
                   <span class="slds-file__text slds-truncate" title={file.Title}>{file.Title}.{file.Extension}</span>
-                  <span if:true={file.ifProfile}>Profile photo</span>
                 </div>
               </div>
             </figcaption>
           </figure>
-  
-          <div class="slds-is-absolute" style="top: 3px; right: 5px; z-index: 10">
-            <lightning-button-menu
-              alternative-text="Show File Menu"
-              variant="border-filled"
-              icon-size="xx-small"
-            >
-              <lightning-menu-item
-                value="Set as profile"
-                label="Set as profile"
-                onclick={handleSetProfileImg}
-              ></lightning-menu-item>
-              <lightning-menu-item
-                value="Delete"
-                label="Delete"
-                onclick={handleDeleteImg}
-              ></lightning-menu-item>
-            
-            </lightning-button-menu>
-          </div>
         </div>
       </li>
+    </lightning-card>
     </template>
+
   </template>

@@ -35,6 +35,8 @@ export default class EditProduct extends LightningElement {
     
 
     connectedCallback(){ 
+
+        this.isModalOpen = true;
         getPrice({prodId : this.recordId})
             .then((result) =>{
                 this.price = result;
@@ -48,7 +50,6 @@ export default class EditProduct extends LightningElement {
         getImg({prodId: this.recordId})
             .then((result) =>{
                 this.imageId = result;
-                console.log(this.imageId);
             })
             .catch((error)=>{
                 console.log(error);
@@ -110,6 +111,8 @@ export default class EditProduct extends LightningElement {
                
             })
         }
+
+    
     }
 
     handleImg(){
@@ -204,5 +207,12 @@ export default class EditProduct extends LightningElement {
      handleUpdateCard(event){
         this.handleImg();
       }
+
+      closeQuickAction() {
+        const closeQA = new CustomEvent('close');
+        // Dispatches the event.
+        this.dispatchEvent(closeQA);
+    }
+    
     
 }
