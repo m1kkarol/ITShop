@@ -4,7 +4,7 @@
 		<members>Lead</members>
 		<name>CustomObject</name>
 	</types>
-	
+
 	<types>
 		<members>Lead_Record_Page</members>
 		<name>FlexiPage</name>
@@ -15,17 +15,12 @@
 		<name>Flow</name>
 	</types>
 	<types>
-		<members>Email_Template</members>
-		<name>PermissionSet</name>
-	</types>
-	<types>
 		<members>Lead</members>
 		<name>Workflow</name>
 	</types>
 	<types>
 		<members>Lead.Lead_Email</members>
 		<name>WorkflowAlert</name>
-		
 	</types>
 	<version>53.0</version>
 </Package>
