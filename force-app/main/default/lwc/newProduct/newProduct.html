@@ -1,0 +1,91 @@
+<!-- sldsValidatorIgnore -->
+<template>
+ 
+
+    <template if:true={isModalOpen}>
+        
+            
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-p-top_xxx-small">
+            <div class="slds-modal__container">
+                <lightning-card>
+                    <lightning-record-edit-form object-api-name={productObject} onsuccess={handleSuccess}>
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create Product</h2>
+                </header>
+                    <template if:false={isAdded}>
+                        <div class="spinner">
+                            <template if:true={isLoading}>
+                                 <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                                 </lightning-spinner>
+                            </template>
+                        </div>
+                        <div class="slds-p-around_medium" id="modal-content-id-1">
+                            
+                            <lightning-messages></lightning-messages>
+                                <lightning-input-field field-name={prodName} onchange={handleProdName}></lightning-input-field>
+                                <lightning-input-field field-name={prodFamily}></lightning-input-field>
+                                <lightning-input-field field-name={prodBrand}></lightning-input-field>
+                                <lightning-input-field field-name={prodModel}></lightning-input-field> 
+                                <lightning-input-field field-name={price}></lightning-input-field>
+                                <lightning-input-field field-name={available}></lightning-input-field>
+                                <lightning-input label="Price" onchange={handlePriceChange} required="true" type="number"></lightning-input>
+                        </div>
+                        <div class="slds-modal_footer" style="margin-left: 39%">
+                                    <lightning-button class="slds-m-right_small" type="submit" variant="brand" label="Save & Next"></lightning-button>
+                                    <button class="slds-button slds-button_neutral" onclick={handleButtonChange}>Close</button>
+                        </div>
+                            
+               
+                    </template>
+
+                    <template if:true={isAdded}>
+                    <div style="margin-left: 35%">
+                        <lightning-file-upload
+                            
+                            label="Attach File"
+                            name="fileUploader"
+                            accept={acceptedFormats}
+                            record-id={recordId}
+                            onuploadfinished={handleUploadFinished}
+                            multiple>
+                        </lightning-file-upload>
+                    </div>
+                        <br />
+                        <div
+                            class="
+                            slds-page-header__row
+                            slds-var-m-top_x-small
+                            slds-var-m-left_medium
+                            slds-grid slds-wrap
+                            "
+                            >
+                            <ul class="slds-grid slds-wrap slds-gutters" style="margin-left: 10%">
+                            <template if:true={loaded}>
+                                <template for:each={files} for:item="file">
+                                <c-preview-file-thumbnail-card
+                                    onupdatelist={handleUpdateCard}    
+                                    onsetprofile={handleProfile}
+                                    if-profile={file.ifProfile}
+                                    key={file.Id}
+                                    file={file}
+                                    record-id={recordId}
+                                    thumbnail={file.thumbnailFileCard}
+                                ></c-preview-file-thumbnail-card>
+                                </template>
+                            </template>
+                            </ul>
+                        </div>
+                        <div style="margin-left: 46%">
+                        <lightning-button variant="brand" label="Save" onclick={handleButtonChange}></lightning-button>
+                    </div>
+                </template>
+            
+            </lightning-record-edit-form>
+        </lightning-card>
+    </div>
+ </section>
+    
+    
+    </template>
+
+</template>
