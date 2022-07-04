@@ -33,6 +33,7 @@
               </lightning-icon>
               <div class="slds-media__body slds-var-p-left_xx-small" >
                 <span class="slds-file__text slds-truncate" title={file.Title}>{file.Title}.{file.Extension}</span>
+                <span if:true={file.ifProfile}>Profile photo</span>
               </div>
             </div>
           </figcaption>
