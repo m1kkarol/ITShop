@@ -22,10 +22,13 @@ public with sharing class FileController{
         }
 
         @AuraEnabled
-        public static void deleteImg (String imgId) {
+        public static void deleteImg (String imgId) { 
             System.debug (imgId);
             delete [SELECT Id FROM ContentDocument WHERE Id =: imgId LIMIT 1];
             
+
         }
+
+        } 
 
     }

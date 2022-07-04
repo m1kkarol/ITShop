@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
+
 	<types>
 		<members>Optimized_Product_Page</members> 
 		<name>FlexiPage</name>
@@ -12,6 +13,7 @@
 		<members>previewPhotoThumbnailCard</members>
 		<members>previewProfilePhoto</members>
 		<members>profilePhoto</members>
+
 		<name>LightningComponentBundle</name>
 	</types>
 	<version>53.0</version>
