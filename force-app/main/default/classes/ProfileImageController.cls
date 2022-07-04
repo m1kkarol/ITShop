@@ -22,11 +22,18 @@ public with sharing class ProfileImageController {
 
     @AuraEnabled
     public static string getImg( String prodId){
-        Product2 prod = [SELECT Id, DisplayUrl FROM Product2 WHERE id =: prodId];
-        
+  
+       
+        List<Product2> prods = [SELECT Id, DisplayUrl FROM Product2 WHERE id =: prodId];
+        if(prods.size() <= 0) {
+            return null;
+        } else {
+            return prods[0].DisplayUrl.replaceAll('/sfc/servlet.shepherd/document/download/', '');
+        }
 
-        return prod.DisplayUrl.replaceAll('/sfc/servlet.shepherd/document/download/', '');
+        
     }
+
 
 
 
