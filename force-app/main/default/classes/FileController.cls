@@ -26,5 +26,9 @@ public with sharing class FileController{
             System.debug (imgId);
             delete [SELECT Id FROM ContentDocument WHERE Id =: imgId LIMIT 1];
             
+
+        }
+
         } 
+
     }

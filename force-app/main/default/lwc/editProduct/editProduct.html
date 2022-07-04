@@ -12,8 +12,6 @@
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Product</h2>
                 </header>
                
-                
-                            
                     <lightning-messages></lightning-messages>
                         <lightning-input-field field-name={prodName} onchange={handleProdName}></lightning-input-field>
                         <lightning-input-field field-name={prodFamily}></lightning-input-field>
@@ -25,7 +23,7 @@
                         <lightning-input label="Price" formatter="currency" value={price} onchange={handlePriceChange} required="true" type="number"></lightning-input>
                 
                 <div class="slds-modal_footer slds-m-top_medium" style="margin-left: 45%"> 
-                            <lightning-button class="slds-m-right_small" type="submit" variant="brand" label="Save"></lightning-button>
+                            <lightning-button class="slds-m-right_small" type="submit" variant="brand" label="Save" onclick={closeQuickAction}></lightning-button>
                            
                 </div>
                 </lightning-record-edit-form>
