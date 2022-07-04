@@ -43,8 +43,12 @@ public with sharing class StandardProductPriceBook {
     @AuraEnabled
     public static Double getPrice(Id prodId) {
 
-        PricebookEntry pricebookentry  = [SELECT UnitPrice FROM PricebookEntry WHERE Product2Id =: prodId ];
-        system.debug(pricebookentry);
-        return pricebookentry.UnitPrice;
+        
+        List<PricebookEntry> pricebooksentry = [SELECT UnitPrice FROM PricebookEntry WHERE Product2Id =: prodId ];
+        if(pricebooksentry.size() <= 0 ) {
+            return null;
+        } else{
+           return pricebooksentry[0].UnitPrice;
+        }
     }
 }
