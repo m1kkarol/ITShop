@@ -4,7 +4,6 @@
 		<members>Lead</members>
 		<name>CustomObject</name>
 	</types>
-
 	<types>
 		<members>Lead_Record_Page</members>
 		<name>FlexiPage</name>
