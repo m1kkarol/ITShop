@@ -1,3 +1,0 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride, force:lightningQuickActionWithoutHeader, lightning:isUrlAddressable" access="global">
- <c:profilePhoto recordId="{!v.recordId}"></c:profilePhoto>
-</aura:component>	
