@@ -84,6 +84,12 @@ export default class ProductSearchPanel extends LightningElement {
                     this.isLoading = false;
                     this.pageForDisplay = 1;
                     this.tableLoaded = true;
+
+                    if(this.pageNumber+1 === 1) { 
+                        this.disabledFirst = false;
+                    } else {
+                        this.disabledFirst = true;
+                    }
                      
                     console.log(this.data.length);
                     this.handleMaxPages();
@@ -133,8 +139,6 @@ export default class ProductSearchPanel extends LightningElement {
             this.disabledLast = false;
         }
 
-        
-       
 
     }
 
@@ -143,6 +147,8 @@ export default class ProductSearchPanel extends LightningElement {
         this.pageData = this.data.slice(this.pageNumber*10, this.pageNumber*10+10);
         this.selectedRows = this.pageData.map(row => row.id).filter(pageId => this.allSelectedRows.has(pageId));
         this.isLoading = false; 
+
+       
     
       }
       // Back a page
@@ -151,6 +157,26 @@ export default class ProductSearchPanel extends LightningElement {
         this.pageNumber = Math.max(0, this.pageNumber - 1);
         
         this.pageForDisplay = this.pageNumber + 1;
+
+        console.log('Current: ' + this.pageNumber);
+        console.log('all ' + this.allPages);
+
+        if(this.pageNumber + 1=== this.allPages) { 
+            this.disabledLast = true;
+            this.disabledNext = true;
+        } else {
+            this.disabledLast = false;
+            this.disabledNext = false;
+        }
+
+        
+        if(this.pageNumber + 1 === 1) { 
+            this.disabledFirst = true;
+            this.disabledPrev = true;
+        } else {
+            this.disabledFirst = false;
+            this.disabledPrev = false;
+        }
 
         
         this.updatePage();
@@ -161,6 +187,10 @@ export default class ProductSearchPanel extends LightningElement {
         this.pageNumber = 0;
         this.pageForDisplay = this.pageNumber + 1;
         this.updatePage();
+        this.disabledFirst = true;
+        this.disabledPrev = true;
+        this.disabledNext = false;
+        this.disabledLast = false;
       }
       // Forward a page
       next() {
@@ -168,6 +198,25 @@ export default class ProductSearchPanel extends LightningElement {
         this.pageNumber = Math.min(Math.round((this.data.length-9)/10), this.pageNumber + 1);
         this.pageForDisplay = this.pageNumber + 1;
 
+        
+        console.log('Current: ' + this.pageNumber);
+        console.log('all ' + this.allPages);
+        
+        if(this.pageNumber + 1 === this.allPages) { 
+            this.disabledLast = true;
+            this.disabledNext = true;
+        } else {
+            this.disabledLast = false;
+            this.disabledNext = false;
+        }
+
+        if(this.pageNumber + 1 === 1) { 
+            this.disabledFirst = true;
+            this.disabledPrev = true;
+        } else {
+            this.disabledFirst = false;
+            this.disabledPrev = false;
+        }
         
 
         this.updatePage();
@@ -177,6 +226,16 @@ export default class ProductSearchPanel extends LightningElement {
         this.isLoading = true; 
         this.pageNumber = Math.round((this.data.length-9)/10);
         this.pageForDisplay = this.pageNumber + 1;
+        this.disabledNext = true;
+        this.disabledPrev = false;
+        this.disabledFirst = false;
+
+        if(this.pageNumber === this.allPages) { 
+            this.disabledLast = false;
+        } else {
+            this.disabledLast = true;
+        }
+
         this.updatePage();
       }
 
