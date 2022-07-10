@@ -13,6 +13,10 @@ import upDatePrice from '@salesforce/apex/StandardProductPriceBook.upDatePrice';
 import updateProfileImg from '@salesforce/apex/ProfileImageController.updateProfileImg';
 import getImg from '@salesforce/apex/ProfileImageController.getImg';
 
+import labelPrice from '@salesforce/label/c.Price';
+import labelSave from '@salesforce/label/c.HD_Save';
+import labelEditProduct from '@salesforce/label/c.IT_Edit_Product'
+
 
 
 
@@ -32,6 +36,12 @@ export default class EditProduct extends LightningElement {
     @track fileList;
     @track files = [];
     imageId;
+
+    label = {
+        labelPrice,
+        labelSave,
+        labelEditProduct 
+    }
     
 
     connectedCallback(){ 

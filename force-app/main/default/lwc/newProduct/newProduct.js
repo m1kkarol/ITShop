@@ -12,6 +12,11 @@ import PROD_BRAND from '@salesforce/schema/Product2.Product_Brand__c';
 import setPrice from '@salesforce/apex/StandardProductPriceBook.setPrice';
 import getFileVersions from "@salesforce/apex/FileController.getVersionFiles";
 
+import labelCreateProduct from '@salesforce/label/c.IT_CreateProduct';
+import labelPrice from '@salesforce/label/c.Price';
+import labelSaveNext from '@salesforce/label/c.IT_SaveNext'
+import labelClose from '@salesforce/label/c.HD_Close';
+
 export default class NewProduct extends LightningElement {
     @api recordId = recordId;
     productObject = PRODUCT2_OBJECT;
@@ -34,6 +39,14 @@ export default class NewProduct extends LightningElement {
 
      get acceptedFormats() {
         return [".pdf", ".png", ".jpg", ".jpeg"];
+     }
+
+     label = {
+        labelCreateProduct,
+        labelPrice,
+        labelSaveNext,
+        labelClose,
+        
      }
 
     closeModal(){

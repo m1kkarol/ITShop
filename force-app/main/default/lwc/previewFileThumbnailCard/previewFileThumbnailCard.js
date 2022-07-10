@@ -3,12 +3,18 @@ import setProfilImg from '@salesforce/apex/ProfileImageController.setProfileImag
 import deleteImg from '@salesforce/apex/FileController.deleteImg';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
+import labelProfilePhoto from '@salesforce/label/c.IT_ProfilePhoto';
+
 export default class PreviewFileThumbnailCard extends LightningElement {
   @api file;
   @api recordId;
   @api thumbnail;
   
   @api ifProfile;
+
+  label = {
+    labelProfilePhoto,
+  }
 
   get iconName() {
     if (this.file.Extension) {

@@ -1,35 +1,80 @@
 <template>
-    <div >
-        <div class="slds-grid slds-wrap">
-            <div class="slds-size_1-of-4">
-                <div class=" slds-text-align_center slds-m-around_x-small">
-                    <img src="x" alt = "test" style="height:430px; width:280px; border-radius: 12px"/>
-                </div>
-            </div>
+    <template for:each={product.data} for:item="prod">
+        <div key={prod.Id} >
+            <main class="container">
 
-            <div class="slsd-size_3-of-4">
-                <div class=" slds-text-align_left slds-m-around_x-small">
-                    <table style="max-width:60%">
-                        <tr>
-                            <td><h1 style="font-size: 20px"><span style="font-weight:bold"> TEst </span></h1></td>
-                            <td><h1 style="font-size: 15px">TEst</h1></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 15vw; max-width: 150px"><h1 style="font-size: 20px"><span style="font-weight:bold">Test  </span></h1></td>
-                            <td><h1 style="font-size: 15px">Test </h1></td>
-                        </tr>
-                        <tr>
-                            <td><h1 style="font-size: 20px"><span style="font-weight:bold">Test </span></h1></td>
-                            <td><h1 style="font-size: 15px">Test</h1></td>
-                        </tr>
-                        <tr>
-                            <td><h1 style="font-size: 20px"><span style="font-weight:bold">Cena </span></h1></td>
-                            <td><h1 style="font-size: 15px">Test</h1>20</td>
-                        </tr>
+                <!-- Left Column / Headphones Image -->
+                <div class="left-column">
+                    <div class="slds-grid">
+                        <div class="slds-col" >
+                            <div class="slds-align_absolute-center">
+                                <a class="prev" onclick={backSlide}>&#10094;</a>
+                            </div>
+                        </div>
+                        <div class="slds-col">
+                            <div class="slds-align_absolute-center">
+                                <template if:true={imagesUrl}>
+                                    <ul class="listing">
+                                        <li class="product">
 
-                    </table>
+                                            <img style="margin-top: 20%" src={currentPhoto} />
+
+                                        </li>
+                                    </ul>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="slds-col">
+                            <div class="slds-align_absolute-center">
+                                <a class="next" onclick={nextSlide} >&#10095;</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+                <!-- Right Column -->
+                <div class="right-column">
+
+                    <!-- Product Description -->
+                    <div class="product-description">
+                        <span>{prod.Family}</span>
+                        <h1>{prod.Product_Brand__c} {prod.Product_Model__c}</h1>
+                        <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+                    </div>
+
+                    <!-- Product Configuration -->
+                    <div class="product-configuration">
+                        <!-- Cable Configuration -->
+                    </div>
+
+                    <!-- Product Pricing -->
+                    <div class="product-price">
+                        <span>148$</span>
+                        <a href="#" class="cart-btn">Add to cart</a>
+                    </div>
+                </div>
+            </main>
+
         </div>
-    </div>
+
+
+    </template>
+    <template if:true={product}>
+        <lightning-tabset>
+            <lightning-tab label="Comments">
+               
+            </lightning-tab>
+            <lightning-tab label="Add Comment" title="2nd tab extended title">
+                <div class="slds-m-vertical_medium">
+                    <c-five-star-rating></c-five-star-rating>
+                </div>
+                <div class="row">
+                    <lightning-textarea label="Add comment" placeholder="Type here..." style="min-height: 150px;max-width: 500px;min-width: 100px; max-height: 150px;"></lightning-textarea>
+                </div>
+                <div class="row">
+                    <a href="#" class="cart-btn">Add comment</a>
+                </div>
+            </lightning-tab>
+        </lightning-tabset>
+    </template>
 </template>
