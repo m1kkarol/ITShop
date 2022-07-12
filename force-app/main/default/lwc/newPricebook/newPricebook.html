@@ -1,0 +1,56 @@
+
+<template>   
+   
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+              
+                    <header class="slds-modal__header">
+            
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Pricebook</h2>
+                    </header>
+                
+
+
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="height: 400px">
+                        <template if:false={isAdded}>
+                        <lightning-record-edit-form  object-api-name={pricebookObject} onsuccess={handleSuccess}>
+                           
+                                <lightning-messages></lightning-messages>
+                                    <lightning-input-field field-name={pricebookName}></lightning-input-field>
+                                    <lightning-input-field field-name={pricebookDescription}></lightning-input-field>
+                                    <lightning-input-field field-name={startDate}></lightning-input-field>
+                                    <lightning-input-field field-name={endDate}></lightning-input-field> 
+                                    <lightning-input-field field-name={isActive}></lightning-input-field>
+                            
+                            <div class="slds-modal_footer slds-m-top_medium slds-m-bottom_medium" style="margin-left: 38%"> 
+                                        <lightning-button class="slds-m-right_small" type="submit" variant="brand" label="Save & Next"></lightning-button>
+                                        <lightning-button class="slds-m-right_small" label="Cancel" onclick={cancelModal}></lightning-button>
+
+                            </div>
+                            </lightning-record-edit-form>
+                        </template>
+
+                        <template if:true={isAdded}>
+                        <div>    
+                    <lightning-datatable
+                            key-field="id"
+                            data={allData}
+                            show-checkbox-column
+                            columns={columns}>
+                    </lightning-datatable>
+                    </div>
+                   <div class="slds-modal_footer slds-m-top_medium slds-m-bottom_medium" style="margin-left: 45%"> 
+                        <lightning-button class="slds-m-right_small" variant="brand" label="Save" onclick={closeModal}></lightning-button>
+        
+                    </div>
+                </template>
+
+                    </div>
+
+           
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+
+        
+ </template>
