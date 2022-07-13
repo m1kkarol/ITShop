@@ -1,0 +1,88 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    </div>
+    <lightning-card>
+    
+       
+    <div class="slds-m-around_medium">
+        
+      
+
+       <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+        <div class="slds-size_1-of-4">
+        <div class=" slds-box_x-small slds-text-align_center "><lightning-input type="text"
+            value={prodName}
+            label="Product Name"
+            onchange={handleProdName}
+            ></lightning-input></div>
+        </div>
+        <div class="slds-size_1-of-4">
+        <div class=" slds-box_x-small slds-text-align_center "><lightning-input type="text"
+            value={prodModel}
+            label="Product Model"
+            onchange={handleProdModel}
+            ></lightning-input></div>
+        </div>
+        <div class="slds-size_1-of-4">
+        <div class=" slds-box_x-small slds-text-align_center"> <lightning-input type="text"
+            value={prodBrand}
+            label="Product Brand"
+            onchange={handleProdBrand}
+            ></lightning-input></div>
+        </div>
+        <div class="slds-size_1-of-4">
+            <div class=" slds-box_x-small slds-text-align_center">
+                <lightning-combobox
+                    name="family"
+                    value={prodFamily}
+                    label="Product Family"
+                    onchange={handleProdFamily}
+                    options={options}>
+                </lightning-combobox>
+            </div>
+            </div>
+        </div>
+
+       <div class="slds-align_absolute-center">
+        <lightning-button label="Search"
+          onclick={handleSearchKeyword}
+          variant="brand" ></lightning-button>
+          
+          <lightning-button label="Clear"
+          onclick={handleClear} class="slds-var-m-left_small"
+           ></lightning-button>
+        
+   
+        </div>
+        
+        
+
+       <template if:true={tableLoaded}>
+        <div class="slds-align_absolute-center slds-var-m-top_small">
+            <lightning-button  label="First" disabled={disabledFirst} onclick={first}></lightning-button>
+            <lightning-button class="slds-var-m-left_small" disabled={disabledPrev} label="Pravious" onclick={previous}></lightning-button>
+            <lightning-button class="slds-var-m-left_small" disabled={disabledNext} label="Next" onclick={next}></lightning-button>
+            <lightning-button class="slds-var-m-left_small" disabled={disabledLast} label="Last" onclick={last}></lightning-button>
+        </div>
+        <div class="slds-align_absolute-center slds-var-m-top_small"><h1 style="font-size: 18px !important">{pageForDisplay}/{allPages}</h1></div>
+
+       <div style="height: 350px;" class="slds-m-top_large">
+            <lightning-datatable
+                key-field="id"
+                data={pageData}
+                show-row-number-column 
+                hide-checkbox-column
+                columns={columns}>
+            </lightning-datatable>
+            
+            
+       </div>
+    </template>
+    </div>
+</lightning-card>
+ </template>
