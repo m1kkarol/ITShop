@@ -27,3 +27,16 @@
     margin-top: 30%;
     text-decoration: none;
 } 
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+.product{
+    position: relative;
+    top: 0;
+    transition: top ease 0.2s;
+}
+.product:hover{
+    top:-15px;
+}

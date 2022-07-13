@@ -87,11 +87,29 @@ html, body {
     color: #43484D;
     letter-spacing: -2px;
   }
+  .product-description h2 {
+    font-weight: 300;
+    font-size: 25px;
+    color: #43484D;
+    letter-spacing: -2px;
+  }
+
+  .product-description h3 {
+    font-weight: 100;
+    font-size: 16px;
+    color: #43484D;
+    letter-spacing: -2px;
+  }
   .product-description p {
     font-size: 16px;
     font-weight: 300;
     color: #86939E;
     line-height: 24px;
+  }
+
+  .td-title {
+    width: 15%;
+    font-weight: 50;
   }
   
   /* Product Configuration */
@@ -270,8 +288,35 @@ html, body {
   color: #000;
 }
 
+.text-area {
+  min-height: 150px;
+  width: 500px; 
+  max-height: 150px; 
+  resize:none; 
+  border-radius:8px; 
+  border: 1px solid blue;
+}
 
 
 :host {
     --sds-c-textarea-sizing-min-height: 120px;
+ }
+
+
+ /* specification */
+ .specification-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+ }
+
+ .product-images{
+
+ }
+
+ .product-descriptions {
+  text-align: justify;
+  letter-spacing: 1px;
+  font-weight: 600;
  }

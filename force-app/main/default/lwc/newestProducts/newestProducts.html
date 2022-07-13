@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-grid">
+    <!-- <div class="slds-grid">
         <div class="slds-col" >
             <div class="slds-align_absolute-center">
             <a class="prev" onclick={backSlide}>&#10094;</a>
@@ -15,6 +15,15 @@
             <a class="next" onclick={nextSlide} >&#10095;</a>
         </div>
        </div>
-    </div>
+    </div> -->
+
+  <div class="container">  
+    <template for:each={newestProducts} for:item="newProd">
+        <div class="product" key={newProd.Id} style="margin-top: 20px">
+
+            <c-product-item url={url} product={newProd}></c-product-item>
+        </div>
+    </template>
+</div>
     
 </template>

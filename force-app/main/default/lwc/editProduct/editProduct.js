@@ -1,5 +1,6 @@
 import { LightningElement, api, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
 import PRODUCT2_OBJECT from '@salesforce/schema/Product2';
 import NAME_FIELD from '@salesforce/schema/Product2.Name';
 import PROD_FAMILY from '@salesforce/schema/Product2.Family';
@@ -7,6 +8,9 @@ import PROD_MODEL from '@salesforce/schema/Product2.Product_Model__c';
 import AVAILABLE from '@salesforce/schema/Product2.Available__c';
 import PROD_BRAND from '@salesforce/schema/Product2.Product_Brand__c';
 import PROD_CODE from '@salesforce/schema/Product2.ProductCode';
+import PROD_DESC from '@salesforce/schema/Product2.Description';
+
+
 import getFileVersions from '@salesforce/apex/FileController.getVersionFiles';
 import getPrice from '@salesforce/apex/StandardProductPriceBook.getPrice';
 import upDatePrice from '@salesforce/apex/StandardProductPriceBook.upDatePrice';
@@ -29,6 +33,7 @@ export default class EditProduct extends LightningElement {
     prodBrand = PROD_BRAND;
     prodName = NAME_FIELD;
     prodCode = PROD_CODE;
+    prodDesc = PROD_DESC;
     productName;
     price;
     @api recordId;

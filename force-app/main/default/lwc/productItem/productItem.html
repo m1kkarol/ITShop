@@ -1,17 +1,34 @@
 <template>
     <template if:true={product}>
+        
         <ul class="listing">
             <li class="product">
                 <a class="img-wrapper" href={url}>
-                    <img src={product.DisplayUrl} alt={product.Name} />
+                    <img style="max-width: 88%" src={product.DisplayUrl} alt={product.Name} />
                 </a>
             
                 <div class="info">
-                    <div class="title">{product.Name} {product.Product_Brand__c} {product.Product_Model__c}</div>
+                    <div class="title"><h4>{product.Name}</h4> </div>
+                    <div class="title"><h4>{product.Product_Brand__c} {product.Product_Model__c}</h4></div>
     
                 </div>
         
             </li>
         </ul>
     </template>
+
+<!-- <template if:true={product}>
+    <section class="products">
+        <div class="product-card">
+            <div class="product-image">
+                <img src={product.DisplayUrl} alt={product.Name} />
+            </div>
+            <div class="product-info">
+                <h5>{product.Porduct_Brand__c}</h5>
+                <h6>{product.Product_Model__c}</h6>
+            </div>
+        </div>
+    </section>
+</template> -->
+
 </template>
