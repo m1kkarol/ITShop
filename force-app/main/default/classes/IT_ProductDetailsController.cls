@@ -4,7 +4,7 @@ public with sharing class IT_ProductDetailsController {
     public static List<Product2> getProductDetails(String productId) {
         List<Product2> prodDetails = new List<Product2>();
 
-        prodDetails = [SELECT Id, Name, Product_Brand__c, Family, Product_Model__c, DisplayUrl FROM Product2 WHERE Id =: productId LIMIT 1];
+        prodDetails = [SELECT Id, Name, Product_Brand__c, Family, Product_Model__c, Description, DisplayUrl FROM Product2 WHERE Id =: productId LIMIT 1];
 
         if(prodDetails.size() <= 0) {
             return prodDetails;

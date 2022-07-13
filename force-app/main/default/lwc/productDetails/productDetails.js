@@ -10,12 +10,15 @@ export default class ProductDetails extends LightningElement {
     imagesUrl = [];
     currentNumber = 0;
     currentPhoto;
+    detailsPhoto;
+    isLoading = false;
 
 
     @wire(getProductDetails, {productId: '$recordId'}) product;
 
     @wire(getImagesDetails, {productId: '$recordId'})
     getImages({error, data}) {
+        this.isLoading = true;
         if(data) {
             this.images = data;
             
@@ -25,6 +28,15 @@ export default class ProductDetails extends LightningElement {
             }
             
             this.currentPhoto = this.imagesUrl[0];
+
+            if(this.imagesUrl.length > 1){
+                this.detailsPhoto = this.imagesUrl[1];
+                this.isLoading = false;
+            } else {
+                this.detailsPhoto = this.imagesUrl[0];
+                this.isLoading = false;
+            }
+            
         }
     }
 

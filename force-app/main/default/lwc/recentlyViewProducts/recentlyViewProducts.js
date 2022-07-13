@@ -5,14 +5,18 @@ export default class RecentlyViewProducts extends LightningElement {
     
     newestProducts = [];
     firstProduct;
-    currentNumber =0;
+    currentNumber =0
+    nextNumber = 1;
+    secondProduct;
     url;
+    isLoading = false;
 
     connectedCallback() {
         getRecentlyView()
             .then((result) =>{
                 this.newestProducts = result;
                 this.firstProduct = this.newestProducts[0];
+                this.secondProduct = this.newestProducts[1];
                 console.log(this.newestProducts);
                 this.createUrlForDetails();
             
@@ -26,20 +30,32 @@ export default class RecentlyViewProducts extends LightningElement {
 
     backSlide() {
         if(this.currentNumber != 0) {
+            this.isLoading = true;
             this.currentNumber -= 1;
+            this.nextNumber -= 1;
         }
         console.log(this.currentNumber);
+        console.log(this.nextNumber);
+        
         this.firstProduct = this.newestProducts[this.currentNumber];
+        this.secondProduct = this.newestProducts[this.nextNumber];
+        this.isLoading = false;
+        
         this.createUrlForDetails();
     }
 
 
     nextSlide() {
         if(this.currentNumber != (this.newestProducts.length - 1)) {
+            this.isLoading = true;
             this.currentNumber += 1;
+            this.nextNumber +=1;
         }
         console.log(this.currentNumber);
+        console.log(this.nextNumber);
         this.firstProduct = this.newestProducts[this.currentNumber];
+        this.secondProduct = this.newestProducts[this.nextNumber];
+        this.isLoading = false;
         this.createUrlForDetails();
     }
 

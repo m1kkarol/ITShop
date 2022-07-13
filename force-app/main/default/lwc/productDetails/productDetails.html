@@ -1,9 +1,15 @@
 <template>
+    
     <template for:each={product.data} for:item="prod">
+        
         <div key={prod.Id} >
+            <div class="spinner">
+                <template if:true={isLoading}>
+                     <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                     </lightning-spinner>
+                </template>
+            </div>
             <main class="container">
-
-                <!-- Left Column / Headphones Image -->
                 <div class="left-column">
                     <div class="slds-grid">
                         <div class="slds-col" >
@@ -37,20 +43,38 @@
 
                     <!-- Product Description -->
                     <div class="product-description">
+                        
                         <span>{prod.Family}</span>
                         <h1>{prod.Product_Brand__c} {prod.Product_Model__c}</h1>
-                        <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+                        <table style="width:100%">
+                            <tr>
+                              <td class="td-title"><h3>Name: </h3></td>
+                              <td><h3>{prod.Name}</h3></td>
+                            </tr>
+                            <tr>
+                              <td class="td-title"><h3>Brand: </h3></td>
+                              <td><h3>{prod.Product_Brand__c}</h3></td>
+                            </tr>
+                            <tr>
+                                <td class="td-title"><h3>Model: </h3></td>
+                              <td><h3>{prod.Product_Model__c}</h3></td>
+                            </tr>
+                          </table>
+                          
+                        
                     </div>
 
                     <!-- Product Configuration -->
                     <div class="product-configuration">
-                        <!-- Cable Configuration -->
+                        <c-five-star-rating></c-five-star-rating>
                     </div>
 
                     <!-- Product Pricing -->
                     <div class="product-price">
-                        <span>148$</span>
+                        <span style="font-size: 35px">148$</span>
                         <a href="#" class="cart-btn">Add to cart</a>
+                        <br>
+                        
                     </div>
                 </div>
             </main>
@@ -59,22 +83,35 @@
 
 
     </template>
-    <template if:true={product}>
+    <template for:each={product.data} for:item="prod">
+        <div key={prod.id}>
         <lightning-tabset>
-            <lightning-tab label="Comments">
+            <lightning-tab label="Sepcification">
+                <div class="specification-container">
+                    <div class="product-images">
+                        <img style="margin-left: 10%; max-width: 70%; max-height: 90%" src={detailsPhoto} />
+                    </div>
+                    <div class="product-descriptions">
+                        {prod.Description}
+                    </div>
+                </div>
+                
+            </lightning-tab>
+            <lightning-tab label="Opinions">
                
             </lightning-tab>
-            <lightning-tab label="Add Comment" title="2nd tab extended title">
+            <lightning-tab label="Add Opinion" title="2nd tab extended title">
                 <div class="slds-m-vertical_medium">
                     <c-five-star-rating></c-five-star-rating>
                 </div>
-                <div class="row">
-                    <lightning-textarea label="Add comment" placeholder="Type here..." style="min-height: 150px;max-width: 500px;min-width: 100px; max-height: 150px;"></lightning-textarea>
-                </div>
-                <div class="row">
+                <div class="row" style="max-height: 150px">
+                    <textarea class="text-area" label="Add comment" placeholder="Type here..."></textarea>
+                </div> 
+                <div class="row" style="margin-top: 20px">
                     <a href="#" class="cart-btn">Add comment</a>
                 </div>
             </lightning-tab>
         </lightning-tabset>
+        </div>
     </template>
 </template>
