@@ -6,6 +6,7 @@ export default class RecentlyViewProducts extends LightningElement {
     newestProducts = [];
     firstProduct;
     currentNumber =0;
+    url;
 
     connectedCallback() {
         getRecentlyView()
@@ -13,6 +14,7 @@ export default class RecentlyViewProducts extends LightningElement {
                 this.newestProducts = result;
                 this.firstProduct = this.newestProducts[0];
                 console.log(this.newestProducts);
+                this.createUrlForDetails();
             
                 
             })
@@ -28,6 +30,7 @@ export default class RecentlyViewProducts extends LightningElement {
         }
         console.log(this.currentNumber);
         this.firstProduct = this.newestProducts[this.currentNumber];
+        this.createUrlForDetails();
     }
 
 
@@ -37,6 +40,11 @@ export default class RecentlyViewProducts extends LightningElement {
         }
         console.log(this.currentNumber);
         this.firstProduct = this.newestProducts[this.currentNumber];
+        this.createUrlForDetails();
+    }
+
+    createUrlForDetails(){
+        this.url = 'https://britenet14-dev-ed.my.site.com/ithshops/s/product/' + this.firstProduct.Id;
     }
 
 }

@@ -10,7 +10,7 @@
                 <lightning-card>
                     <lightning-record-edit-form object-api-name={productObject} onsuccess={handleSuccess}>
                 <header class="slds-modal__header">
-                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create Product</h2>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.labelCreateProduct}</h2>
                 </header>
                     <template if:false={isAdded}>
                         <div class="spinner">
@@ -28,11 +28,11 @@
                                 <lightning-input-field field-name={prodModel}></lightning-input-field> 
                                 <lightning-input-field field-name={price}></lightning-input-field>
                                 <lightning-input-field field-name={available}></lightning-input-field>
-                                <lightning-input label="Price" onchange={handlePriceChange} required="true" type="number"></lightning-input>
+                                <lightning-input label={label.labelPrice} onchange={handlePriceChange} required="true" type="number"></lightning-input>
                         </div>
                         <div class="slds-modal_footer" style="margin-left: 39%">
-                                    <lightning-button class="slds-m-right_small" type="submit" variant="brand" label="Save & Next"></lightning-button>
-                                    <button class="slds-button slds-button_neutral" onclick={handleButtonChange}>Close</button>
+                                    <lightning-button class="slds-m-right_small" type="submit" variant="brand" label={label.labelSaveNext}></lightning-button>
+                                    <button class="slds-button slds-button_neutral" onclick={handleButtonChange}>{label.labelClose}</button>
                         </div>
                             
                

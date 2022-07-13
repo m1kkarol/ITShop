@@ -1,0 +1,67 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    </div>
+    <lightning-card>
+    
+       
+    <div class="slds-m-around_medium">
+        
+      
+
+       <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+        <div class="slds-size_2-of-5">
+        </div>
+        <div class="slds-size_1-of-5">
+        <div class=" slds-box_x-small slds-text-align_center "><lightning-input type="text"
+            value={pricebookName}
+            label="Pricebook Name"
+            onchange={handlePriceBookName}
+            ></lightning-input></div>
+        </div>
+    </div>
+
+       <div class="slds-align_absolute-center">
+        <lightning-button label="Search"
+          onclick={handleSearchPricebook}
+          variant="brand" ></lightning-button>
+
+          <lightning-button label="Add New"
+          variant="brand"
+          class="slds-var-m-left_small"
+          onclick={openModal}
+          ></lightning-button>
+          
+          <lightning-button label="Clear"
+          onclick={clearTable} class="slds-var-m-left_small"
+           ></lightning-button>
+
+          
+        
+   
+        </div>
+        
+       </div>
+       <template if:true={isLoaded}>
+       <div style="height: 550px;" class="slds-m-top_large">
+        <lightning-datatable
+            key-field="id"
+            data={allPricebooks}
+            hide-checkbox-column
+            columns={columns} 
+            onrowaction={handleRowAction}
+            >
+        </lightning-datatable>
+   </div>
+</template>
+    </lightning-card>
+
+    <template if:true={isModalOpen}>
+        <c-new-pricebook onjustclosemodal={handleCancelModal} onclosemodal={handleModalEvent}></c-new-pricebook>
+    </template>
+
+</template> 

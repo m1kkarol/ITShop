@@ -1,0 +1,58 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+
+<template>
+    <lightning-card>
+    <template if:false={allData}>
+        <div class="slds-text-heading_large slds-align_absolute-center">Select Pricebook</div>
+    </template>
+</lightning-card>
+    <template if:true={allData}>
+    <lightning-card>
+<div class="demo-only demo-only--sizing slds-grid slds-wrap slds-align_absolute-center">
+    <div class="slds-size_1-of-2">
+      <div class=" slds-text-align_center slds-m-around_x-small">
+            <!-- <lightning-input type="number" formatter="percent" step="0.01" label="Percentage" onchange={handlePercentage}></lightning-input> -->
+            <lightning-slider if:false={isChecked}  class="slds-m-bottom_medium" label="Percentage" size="medium" onchange={handlePercentage}></lightning-slider>
+            <lightning-input if:true={isChecked} type="number" formatter="currency" label="Currency" onchange={handleCurrency}></lightning-input>
+      </div>
+    </div>
+</div>
+
+<div class="slds-form-element">
+    <label class="slds-checkbox_toggle slds-grid slds-align_absolute-center">
+      <input type="checkbox" name="checkbox-toggle-16" value={isChecked} aria-describedby="checkbox-toggle-16" onchange={handleCheckbox} />
+      <span id="checkbox-toggle-16" class="slds-checkbox_faux_container" aria-live="assertive">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-checkbox_on">Currency</span>
+        <span class="slds-checkbox_off">Percentage</span>
+      </span>
+    </label>
+</div>
+    <div class="slds-m-bottom_medium">
+        <lightning-button label="Add More Products"
+          onclick={addMoreProducts}
+          variant="brand" class="slds-m-left_large"></lightning-button>
+
+          <lightning-button label="Update Price"
+          variant="brand"
+          class="slds-var-m-left_small"
+          onclick={updatePrice}
+          ></lightning-button>
+    </div>
+    
+
+        <lightning-datatable
+        key-field="id"
+        data={allData}
+        show-checkbox-column
+        columns={columns} 
+        >
+    </lightning-datatable>
+    </lightning-card>
+
+    <template if:true={isAllProducts}>
+        <c-all-products record={recordId} onclosemodal={handleCloseModale}></c-all-products>
+    </template>
+</template>
+</template>
