@@ -5,6 +5,7 @@ import getProductDetails from '@salesforce/apex/IT_ProductDetailsController.getP
 import getImagesDetails from '@salesforce/apex/IT_ProductDetailsController.getDetailsImg';
 import addProductReviews from '@salesforce/apex/IT_ProductDetailsController.addProductReviews';
 import getRatingValue from '@salesforce/apex/IT_ProductDetailsController.getRatingValue';
+import getProductPrice from '@salesforce/apex/IT_ProductDetailsController.getProductPrice';
 import Id from '@salesforce/user/Id';
 
 
@@ -50,11 +51,32 @@ export default class ProductDetails extends LightningElement {
         }
     }
 
+    @wire(getProductPrice, {productId: '$recordId'})
+    getPrice({error, data}){
+        if(data){
+            this.price = data[0].expr0;
+            
+        }
+    }
+
+   
+
+
     connectedCallback() { 
         getRatingValue({productId: this.recordId})
             .then((result) => {
                 this.ratingValue = Math.round(result[0].expr0);
+                console.log(this.ratingValue);
             })
+            .catch((error)=>{
+                console.log(error);
+            });
+
+        // getProductPrice({productId: this.recordId}) 
+        //     .then((result)=>{
+        //         this.price = result[0].expr0;
+        //         console.log(this.price);
+        //     });
         
     }
 

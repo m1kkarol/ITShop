@@ -72,9 +72,13 @@ public with sharing class IT_ProductDetailsController {
         return groupedResults;
     }
 
-    @AuraEnabled
-    public static List<PricebookEntry> getProductPrice(String productId) {
-        
+    @AuraEnabled(cacheable = true)
+    public static AggregateResult[] getProductPrice(String productId) {
+     
+        AggregateResult[] groupedResults = [SELECT MIN(UnitPrice) FROM PricebookEntry WHERE Product2Id =: productId AND Pricebook2.isActive = true];
+
+        return groupedResults;
+
     }
 }
 
