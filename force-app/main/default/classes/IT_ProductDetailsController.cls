@@ -26,4 +26,55 @@ public with sharing class IT_ProductDetailsController {
         ];
     
     }
+
+    @AuraEnabled
+    public static void addProductReviews(String prodId, String userId, Integer rating, String commentContent) {
+
+        Product2 prod = [SELECT Id, Name FROM Product2 WHERE Id =: prodId];
+
+        System.debug('test apex review');
+
+        ProductReview__c prodRev = new ProductReview__c();
+
+        prodRev.Product__c = prod.Id;
+        prodRev.Rating__c = rating;
+        prodRev.ReviewContent__c = commentContent;
+  
+
+        insert prodRev;
+
+    }
+
+    @AuraEnabled(cacheable = true) 
+    public static List<ProductReview__c> getProductReviews(String prodId) {
+        List<ProductReview__c> allReviews = [SELECT 
+                                                Id,
+                                                Name,
+                                                ReviewContent__c,
+                                                Rating__c,
+                                                LastModifiedDate,
+                                                CreatedDate,
+                                                CreatedBy.Name,
+                                                CreatedBy.SmallPhotoUrl
+                                            FROM
+                                                ProductReview__c
+                                            WHERE 
+                                                Product__c =: prodId];
+
+        return allReviews; 
+    }
+
+    @AuraEnabled
+    public static AggregateResult[] getRatingValue(String productId){
+
+        AggregateResult[] groupedResults = [SELECT AVG(Rating__c) FROM ProductReview__c WHERE Product__c =: productId];
+        
+        return groupedResults;
+    }
+
+    @AuraEnabled
+    public static List<PricebookEntry> getProductPrice(String productId) {
+        
+    }
 }
+

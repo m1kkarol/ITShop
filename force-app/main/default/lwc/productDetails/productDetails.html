@@ -66,7 +66,7 @@
 
                     <!-- Product Configuration -->
                     <div class="product-configuration">
-                        <c-five-star-rating></c-five-star-rating>
+                        <c-five-star-rating value={ratingValue} read-only="true"></c-five-star-rating>
                     </div>
 
                     <!-- Product Pricing -->
@@ -86,6 +86,11 @@
     <template for:each={product.data} for:item="prod">
         <div key={prod.id}>
         <lightning-tabset>
+            <lightning-tab label="Opinions" value="2">
+                <div>
+                    <c-product-reviews product-id={prod.Id}></c-product-reviews>
+                </div>
+            </lightning-tab>
             <lightning-tab label="Sepcification">
                 <div class="specification-container">
                     <div class="product-images">
@@ -97,18 +102,16 @@
                 </div>
                 
             </lightning-tab>
-            <lightning-tab label="Opinions">
-               
-            </lightning-tab>
+           
             <lightning-tab label="Add Opinion" title="2nd tab extended title">
                 <div class="slds-m-vertical_medium">
-                    <c-five-star-rating></c-five-star-rating>
+                    <c-five-star-rating onratingchange={handleRatingChanged}></c-five-star-rating>
                 </div>
                 <div class="row" style="max-height: 150px">
-                    <textarea class="text-area" label="Add comment" placeholder="Type here..."></textarea>
+                    <textarea class="text-area" label="Add comment" placeholder="Type here..." onchange={handleCommentContent}></textarea>
                 </div> 
                 <div class="row" style="margin-top: 20px">
-                    <a href="#" class="cart-btn">Add comment</a>
+                    <a class="cart-btn" onclick={handleAddComment}>Add comment</a>
                 </div>
             </lightning-tab>
         </lightning-tabset>
