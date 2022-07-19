@@ -66,13 +66,16 @@
 
                     <!-- Product Configuration -->
                     <div class="product-configuration">
+                        <div ><input class="quantity" type="number" value="1" min="1" onchange={handleQuantity}></div>
                         <c-five-star-rating value={ratingValue} read-only="true"></c-five-star-rating>
+                        <div if:true={isLower}><span style="font-size: 19px; color: rgb(10, 8, 8)"><del>€{oldPrice}</del></span></div>
                     </div>
 
                     <!-- Product Pricing -->
                     <div class="product-price">
-                        <span style="font-size: 35px">{price}$</span>
-                        <a href="#" class="cart-btn">Add to cart</a>
+                        
+                        <span style="font-size: 35px; color: rgb(170, 16, 16); font-weight: bold">€{price}</span>
+                        <a data-item={prod.Id} onclick={handleProdClick} class="cart-btn">Add to cart</a>
                         <br>
                         
                     </div>
@@ -91,12 +94,12 @@
                     <c-product-reviews product-id={prod.Id}></c-product-reviews>
                 </div>
             </lightning-tab>
-            <lightning-tab label="Sepcification">
+            <lightning-tab label="Description">
                 <div class="specification-container">
                     <div class="product-images">
                         <img style="margin-left: 10%; max-width: 70%; max-height: 90%" src={detailsPhoto} />
                     </div>
-                    <div class="product-descriptions">
+                    <div class="product-descriptions" style="font-size: 17px">
                         {prod.Description}
                     </div>
                 </div>
@@ -104,15 +107,20 @@
             </lightning-tab>
            
             <lightning-tab label="Add Opinion" title="2nd tab extended title">
-                <div class="slds-m-vertical_medium">
-                    <c-five-star-rating onratingchange={handleRatingChanged}></c-five-star-rating>
-                </div>
-                <div class="row" style="max-height: 150px">
-                    <textarea class="text-area" label="Add comment" placeholder="Type here..." onchange={handleCommentContent}></textarea>
-                </div> 
-                <div class="row" style="margin-top: 20px">
-                    <a class="cart-btn" onclick={handleAddComment}>Add comment</a>
-                </div>
+                <template if:true={renderAddComment}>
+                    <div class="slds-m-vertical_medium">
+                        <c-five-star-rating onratingchange={handleRatingChanged}></c-five-star-rating>
+                    </div>
+                    <div class="row" style="max-height: 150px">
+                        <textarea id="text-area-comment" class="text-area" label="Add comment" placeholder="Type here..." onchange={handleCommentContent}></textarea>
+                    </div> 
+                    <div class="row" style="margin-top: 20px"> 
+                        <a class="cart-btn" onclick={handleAddComment}>Add comment</a>
+                    </div>
+                </template>
+                <template if:false={renderAddComment}>
+                    <div class="slds-align_absolute-center slds-scrollable_y">You already reviewed this product</div>
+                </template>
             </lightning-tab>
         </lightning-tabset>
         </div>

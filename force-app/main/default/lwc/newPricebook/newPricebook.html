@@ -31,6 +31,27 @@
                         </template>
 
                         <template if:true={isAdded}>
+        
+                                <div class="slds-m-around_medium">
+                                    <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                                     <div class="slds-size_1-of-5">
+                                     </div>
+                                     <div class="slds-size_3-of-5">
+                                     <div class=" slds-box_x-small slds-text-align_center "><lightning-input type="text"
+                                         value={productName}
+                                         label="Product Name"
+                                         onchange={handleProductName}
+                                         ></lightning-input></div>
+                                     </div>
+                                 </div>
+                                 </div>
+                                <div class="slds-align_absolute-center">
+                                    <lightning-button label="Search"
+                                      onclick={handleSearchProduct}
+                                      variant="brand" 
+                                      class="slds-m-bottom_small"></lightning-button>
+                                      </div>
+                
                         <div>    
                     <lightning-datatable
                             key-field="id"

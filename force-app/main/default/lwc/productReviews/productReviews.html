@@ -1,11 +1,11 @@
 <template>
     <!-- div for when there are no reviews available -->
-    <template if:false={reviews}>
+    <template if:false={isDisplay}>
         <div class="slds-align_absolute-center slds-scrollable_y">No reviews available</div>
     </template>
     <!-- div for when there are reviews available -->
     <template if:true={reviews}>
-        <div class="slds-feed reviews-style slds-is-relative slds-scrollable_y" style="height: 400px">
+        <div class="slds-feed reviews-style slds-is-relative slds-scrollable_y container" style="height: 400px">
             <ul class="slds-feed__list">
                 <!-- start iteration -->
                 <template for:each={reviews} for:item="prodReview">
@@ -14,36 +14,49 @@
                             <header class="slds-post__header slds-media" style="margin-top: 8px">
                                 <div class="slds-media__figure">
                                     <!-- display the creator’s picture -->
-                                    <lightning-avatar variant="circle" src={prodReview.CreatedBy.SmallPhotoUrl}></lightning-avatar>
+                                    <lightning-avatar variant="circle" src={prodReview.SmallPhoto}></lightning-avatar>
                                 </div>
                                 <div class="slds-media__body">
                                     <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
                                         <p>
                                             <!-- display creator’s name -->
-                                            <a  title={prodReview.CreatedBy.Name} data-record-id={prodReview.CreatedBy.Id}>
-                                                {prodReview.CreatedBy.Name}
+                                            <a  title={prodReview.CreatedByName} data-record-id={prodReview.CreatedById}>
+                                                {prodReview.CreatedByName}
                                             </a>
                                             
+                                            
                                         </p>
+                                        <div if:true={prodReview.isOwner}>
+                                            <lightning-button data-id={prodReview.Id} onclick={handleDelComment} label="Del" variant="base"></lightning-button>
+                                            /
+                                            <lightning-button  data-id={prodReview.Id} onclick={handleEditComment} label="Edit" variant="base"></lightning-button>
+                                        </div>
                                     </div>
                                     <p class="slds-text-body_small">
                                         <!-- display created  date -->
                                         <lightning-formatted-date-time value={prodReview.LastModifiedDate}></lightning-formatted-date-time>
                                     </p>
+
                                 </div>
                             </header>
                             <div class="slds-text-longform">
                                 
                                 <!-- display Comment__c -->
-                                <lightning-formatted-rich-text value={prodReview.ReviewContent__c}></lightning-formatted-rich-text>                                
+                                <lightning-formatted-rich-text value={prodReview.Content}></lightning-formatted-rich-text>                                
                             </div>
                         <!-- display five star rating on readonly mode -->
-                        <c-five-star-rating value={prodReview.Rating__c} read-only="true"></c-five-star-rating>
+                        <c-five-star-rating value={prodReview.Rating} read-only="true"></c-five-star-rating>
                     </article>
                 </li>
             </template>
             <!-- end iteration -->
         </ul>
     </div>
+    </template>
+    <template if:true={isModalOpen}>
+        <c-confirm-delete-comment-modal comment={comment} onclosemodal={handleCloseModale} oncancelmodal={closeDelModal}></c-confirm-delete-comment-modal>
+    </template>
+    <template if:true={isEditOpen}>
+        <c-edit-comment-modal comment={comment} oncancelmodal={handleCloseEdit} onclosemodal={editComment}></c-edit-comment-modal>
     </template>
 </template>  

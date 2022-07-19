@@ -12,6 +12,7 @@ import selectedPricebook from '@salesforce/messageChannel/Pricebook_Details__c';
 import getAllPricebookEntries from '@salesforce/apex/IT_PricebookManagerController.getAllPricebookEntries';
 import updatePricebookPercent from '@salesforce/apex/IT_PricebookManagerController.updatePricebookPercent';
 import updatePricebookCurrency from '@salesforce/apex/IT_PricebookManagerController.updatePricebookCurrency';
+import updatePricebookNewPrice from '@salesforce/apex/IT_PricebookManagerController.updatePricebookNewPrice';
 
 
 const columns = [
@@ -35,10 +36,70 @@ export default class PricebookDetails extends LightningElement {
     curr;
     percentage;
     newPrices = [];
+    value = 'amount';
+    newPrice;
+
+    useNewPrice = false;
+    usePercentage = false;
+    useAmount = true;
 
     @wire(MessageContext)
     messageContext;
 
+    get options(){
+        return [
+            {label: 'Percentage', value: 'percentage'},
+            {label: 'Amount', value: 'amount'},
+            {label: 'New price', value: 'newPrice'},
+        ]
+    }
+
+    handleChange(event){
+        this.value = event.detail.value;
+        if(this.value == 'amount'){
+            this.useNewPrice = false;
+            this.usePercentage = false;
+            this.useAmount = true;
+        }
+        if(this.value == 'percentage'){
+            this.useNewPrice = false;
+            this.usePercentage = true;
+            this.useAmount = false;
+        }
+        if(this.value == 'newPrice'){
+            this.useNewPrice = true;
+            this.usePercentage = false;
+            this.useAmount = false;
+        }
+
+    }
+
+    handleNewPrice(event){
+        this.newPrice = event.target.value;
+
+
+        getAllPricebookEntries({recordId: this.recordId})
+        .then((result)=>{
+             this.allData = [];
+                for(let i = 0; i < result.length; i++) {
+                    let productsPrice = {
+                        Id: result[i].Id,
+                        ProductId: result[i].Product2Id,
+                        Name: result[i].Product2.Name,
+                        Price: result[i].UnitPrice,
+                        NewPrice: this.newPrice
+                        }
+
+
+                    this.allData.push(productsPrice);
+                    console.log(this.curr);
+                    console.log(this.allData.NewPrice);
+            }
+        })
+        .catch((error) =>{
+            console.log(error);
+        })
+    }
 
     subscribeToMessageChannel() {
         if (!this.subscription) {
@@ -145,7 +206,7 @@ export default class PricebookDetails extends LightningElement {
             console.log(entryId);
             
         
-            if(this.isChecked){
+            if(this.useAmount){
                 updatePricebookCurrency({ids: entryId, pricebookId: this.recordId, price: this.curr})
                 .then((result)=>{
                     this.dispatchEvent(
@@ -174,7 +235,7 @@ export default class PricebookDetails extends LightningElement {
                     this.getAllPricebooks(this.recordId);
                     
                 })
-            } else if(!this.isChecked) {
+            } else if(this.usePercentage) {
                 updatePricebookPercent({ids: entryId, pricebookId: this.recordId, price: this.percentage})
                 .then((result)=>{
 
@@ -202,6 +263,33 @@ export default class PricebookDetails extends LightningElement {
             }
                     
                     
+                })
+            }
+            else if(this.useNewPrice) {
+                updatePricebookNewPrice({ids: entryId, pricebookId: this.recordId, newPrice: this.newPrice})
+                .then((result)=>{
+                    this.dispatchEvent(
+                        new ShowToastEvent({
+                        title: "Price Updated",
+                        message: 'You set new price: €' + this.newPrice,
+                        variant: "success"
+                        })
+                    );
+
+                    this.allData = [];
+                    for(let i = 0; i < result.length; i++) {
+                    let productsPrice = {
+                        Id: result[i].Id,
+                        ProductId: result[i].Product2Id,
+                        Name: result[i].Product2.Name,
+                        Price: result[i].UnitPrice,
+                        NewPrice: this.newPrice,
+                        }
+
+
+                    this.allData.push(productsPrice);
+                    console.log(this.allData);
+                    }
                 })
             }
 

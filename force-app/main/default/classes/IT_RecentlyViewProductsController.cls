@@ -1,4 +1,4 @@
-public with sharing class IT_RecentlyViewProductsController {
+public without sharing class IT_RecentlyViewProductsController {
     @AuraEnabled
     public static List<Product2> getRecentlyView() {
         List<RecentlyViewed> recentlyViewedProductsId = [SELECT Id FROM RecentlyViewed WHERE Type = 'Product2' AND LastViewedDate = LAST_N_DAYS:7 ORDER BY LastViewedDate DESC LIMIT 4];

@@ -11,6 +11,7 @@ import getAllProductsWithPrices from '@salesforce/apex/IT_PricebookManagerContro
 import updatePricebookCurrency from '@salesforce/apex/IT_PricebookManagerController.updatePricebookCurrency';
 import updatePricebookPercent from '@salesforce/apex/IT_PricebookManagerController.updatePricebookPercent';
 import addProducts from '@salesforce/apex/IT_PricebookManagerController.addProductsToPricebook';
+import getProducts from '@salesforce/apex/IT_PricebookManagerController.getProducts';
 
 
 const columns = [
@@ -36,6 +37,7 @@ export default class NewPricebook extends LightningElement {
     productIds;
     isChecked = false;
     newPrices;
+    productName = '';
 
     
 
@@ -65,6 +67,20 @@ export default class NewPricebook extends LightningElement {
             .catch((error)=>{
                 console.log(error);
             })
+    }
+
+    handleSearchProduct(){
+        getProducts({productName: this.productName})
+            .then((result) => {
+                this.allData = result;
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+    }
+
+    handleProductName(event) {
+        this.productName = event.target.value;
     }
 
     closeModal(event){

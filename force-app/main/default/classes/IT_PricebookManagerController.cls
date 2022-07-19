@@ -33,6 +33,8 @@ public with sharing class IT_PricebookManagerController {
     @AuraEnabled
     public static List<PricebookEntry> updatePricebookCurrency(List<String> ids, String pricebookId, Double price) {
         
+        System.debug(ids);
+
         List<PricebookEntry> pbEntries = new List<PricebookEntry>();
 
         for(PricebookEntry pricebookEntry : [SELECT Id, UnitPrice, Pricebook2Id, Product2.Name FROM PricebookEntry WHERE Id IN: ids]) {
@@ -48,24 +50,24 @@ public with sharing class IT_PricebookManagerController {
     @AuraEnabled
     public static List<PricebookEntry> updatePricebookPercent(List<String> ids, String pricebookId, Double price) {
         
-        // List<PricebookEntry> pricebookEntries = [SELECT Id, Product2.Id, Product2.Name, PricebookEntry.UnitPrice FROM PricebookEntry WHERE Pricebook2Id =: pricebookId];
-
-
-        // for(String id: productId) {
-        //     for(PricebookEntry pricebook: pricebookEntries) {
-        //         if(id == pricebook.Product2.Id) { 
-        //             pricebook.UnitPrice = pricebook.UnitPrice * (1-(price/100));
-        //         }
-        //     }    
-        // }
-        
-        // update pricebookEntries;
-        // return pricebookEntries;
-
         List<PricebookEntry> pbEntries = new List<PricebookEntry>();
 
         for(PricebookEntry pricebookEntry : [SELECT Id, UnitPrice, Pricebook2Id, Product2.Name FROM PricebookEntry WHERE Id IN: ids]) {
-            pricebookEntry.UnitPrice = pricebookEntry.UnitPrice * (price/100);
+            pricebookEntry.UnitPrice = pricebookEntry.UnitPrice * ( 1- (price/100));
+            pbEntries.add(pricebookEntry);
+        }
+
+        update pbEntries;
+
+        return [SELECT Id, UnitPrice, Pricebook2Id, Product2.Name FROM PricebookEntry WHERE Pricebook2Id =: pricebookId];
+    }
+
+    @AuraEnabled 
+    public static List<PricebookEntry> updatePricebookNewPrice(List<String> ids, String pricebookId, Double newPrice) {
+        List<PricebookEntry> pbEntries = new List<PricebookEntry>();
+
+        for(PricebookEntry pricebookEntry : [SELECT Id, UnitPrice, Pricebook2Id, Product2.Name FROM PricebookEntry WHERE Id IN: ids]) {
+            pricebookEntry.UnitPrice = newPrice;
             pbEntries.add(pricebookEntry);
         }
 
