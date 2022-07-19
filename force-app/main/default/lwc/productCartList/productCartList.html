@@ -13,7 +13,9 @@
 
 	<div class="container">
         <template if:false={renderCart}>
-            <h1>Your shoping cart are empty </h1>
+            <div style="display: flex; justify-content:center">
+                <h1><img style="max-width: 200px; max-height: 200px" src="https://cdn-icons-png.flaticon.com/512/2037/2037021.png"/> </h1>
+             </div>
         </template>
     
         <template if:true={renderCart}>
