@@ -193,7 +193,9 @@ html, body {
 
 }
 
-
+.quantity{
+  max-width: 50px;
+}
 
 
 .img-wrapper

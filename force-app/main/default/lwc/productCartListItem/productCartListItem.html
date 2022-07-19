@@ -1,0 +1,34 @@
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    </div>
+    <article class="product">
+    <header>
+        <a class="remove" onclick={handleRemove}>
+            <img style="max-height: 150px" src={productCartListItem.DisplayUrl} alt="">
+
+            <h3>Remove</h3>
+        </a>
+    </header>
+
+    <div class="content">
+        <h1>{productCartListItem.Name} {productCartListItem.Model}</h1>
+        
+    </div>
+
+    <footer class="content">
+        <span class="qt"><input type="number" value={productQuantity} min="1" style="max-width: 50px" onchange={handleQuantity}></span>
+
+        <h2 class="full-price">
+            {total}€
+        </h2>
+
+        <h2 class="price">
+            {productCartListItem.Price}€
+        </h2>
+    </footer>
+</article>
+</template>

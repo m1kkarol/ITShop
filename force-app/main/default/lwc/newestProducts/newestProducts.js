@@ -20,7 +20,7 @@ export default class NewestProducts extends LightningElement {
                 console.log(error);
             })
             
-        
+            
     }   
 
     backSlide() {

@@ -4,29 +4,39 @@
 <template>
     <lightning-card>
     <template if:false={allData}>
-        <div class="slds-text-heading_large slds-align_absolute-center">Select Pricebook</div>
+        
     </template>
 </lightning-card>
     <template if:true={allData}>
     <lightning-card>
-<div class="demo-only demo-only--sizing slds-grid slds-wrap slds-align_absolute-center">
+<div class="demo-only demo-only--sizing slds-grid slds-wrap slds-align_absolute-center" >
     <div class="slds-size_1-of-2">
       <div class=" slds-text-align_center slds-m-around_x-small">
-            <!-- <lightning-input type="number" formatter="percent" step="0.01" label="Percentage" onchange={handlePercentage}></lightning-input> -->
-            <lightning-slider if:false={isChecked}  class="slds-m-bottom_medium" label="Percentage" size="medium" onchange={handlePercentage}></lightning-slider>
-            <lightning-input if:true={isChecked} type="number" formatter="currency" label="Currency" onchange={handleCurrency}></lightning-input>
+            <div class="slds-m-around_x-medium"><lightning-slider if:true={usePercentage} class="slds-m-bottom_medium" label="Percentage" size="medium" onchange={handlePercentage}></lightning-slider></div>
+            <lightning-input if:true={useAmount} type="number" formatter="currency" label="Amount" onchange={handleCurrency}></lightning-input>
+            <lightning-input if:true={useNewPrice} type="number" formatter="currency" label="New Price" onchange={handleNewPrice}></lightning-input>
       </div>
+      
     </div>
 </div>
 
 <div class="slds-form-element">
-    <label class="slds-checkbox_toggle slds-grid slds-align_absolute-center">
-      <input type="checkbox" name="checkbox-toggle-16" value={isChecked} aria-describedby="checkbox-toggle-16" onchange={handleCheckbox} />
+    
+
+
+    <label class="slds-checkbox_toggle slds-grid slds-align_absolute-center" style="margin-top: 15px">
+      <!-- <input type="checkbox" name="checkbox-toggle-16" value={isChecked} aria-describedby="checkbox-toggle-16" onchange={handleCheckbox} />
       <span id="checkbox-toggle-16" class="slds-checkbox_faux_container" aria-live="assertive">
         <span class="slds-checkbox_faux"></span>
-        <span class="slds-checkbox_on">Currency</span>
+        <span class="slds-checkbox_on">Amount</span>
         <span class="slds-checkbox_off">Percentage</span>
-      </span>
+      </span> -->
+      <lightning-combobox
+        name="progress"
+        value={value}
+        placeholder="Select Progress"
+        options={options}
+        onchange={handleChange} style="margin-bottom: 10px"></lightning-combobox>
     </label>
 </div>
     <div class="slds-m-bottom_medium">
