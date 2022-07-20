@@ -1,0 +1,92 @@
+<template>
+    <template if:false={isOrdered}>
+        <div class="spinner">
+            <template if:true={isLoading}>
+                 <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                 </lightning-spinner>
+            </template>
+        </div>
+        <lightning-record-edit-form object-api-name={orderObject} onsubmit={handleSubmit} onsuccess={handleSucess}>
+            <div class="container">
+                <div class="left" style="min-width: 60%">
+
+
+                    <lightning-messages> </lightning-messages>
+                    <lightning-input-field required="true" field-name={shippingAddress}> </lightning-input-field>
+                    <lightning-input-field field-name={billingAddress}> </lightning-input-field>
+
+
+
+
+                </div>
+                <div class="right"
+                    style="min-width: 35%; background: rgb(236, 235, 235); max-height: 350px; border-radius: 8px; margin-left: 10px">
+
+                    <table style="width:90%; margin-left: 3%; margin-top: 10%; margin-right: 10%;">
+                        <tr>
+                            <td>
+                                <h1 class="table-column">Product</h1>
+                            </td>
+                            <td>
+                                <h1 class="table-column">Quantity</h1>
+                            </td>
+                            <td>
+                                <h1 class="table-column">Price</h1>
+                            </td>
+                        </tr>
+                        <template for:each={allProducts} for:item="prod">
+                            <tr key={prod.Id}>
+                                <td>{prod.Name}{prod.Model}</td>
+                                <td style="align-items: left">{prod.Quantity}</td>
+                                <td>{prod.Price}€</td>
+                            </tr>
+                        </template>
+                    </table>
+
+                    <div class="left-in"
+                        style=" width: 85%; margin-left: 6%; margin-top: 10%; margin-right: 10%; border-top: 1px solid black;">
+                        <h2 class="subtotal">Subtotal: <span>{totalPrice}</span>€</h2>
+                        <h3 class="shipping">Shipping: <span>5.00</span>€</h3>
+                    </div>
+
+                    <div style="width: 85%; margin-left: 6%; border-top: 1px solid black; margin-top: 3%">
+                        <lightning-radio-group name="radioGroup" label="Payment" options={options} value={value}
+                            type="radio"></lightning-radio-group>
+                    </div>
+
+                    <div style="display:flex; justify-content: center">
+                        <lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Create order"
+                            onclick={changeView}>
+                        </lightning-button>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </lightning-record-edit-form>
+    </template>
+    <template if:true={isOrdered}>
+        <div style="display: flex; justify-content:center; flex-direction: column; align-items: center">
+            <div class="img">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc25cLgWZUc47e2OWCMKsy4n8ITb8JLkBtMg&amp;usqp=CAU" />
+            </div>
+        
+            <div class="thanks">
+                <h1 style="font-size: 30px">Thanks for your order!</h1></br>
+            </div>
+            <div class="details">
+                <h1 style="font-size: 15px">Your order Number: {orderNumber}</h1>
+            </div>
+            <div class="orders">
+                <a><h1 style="font-size: 15px">Click here to check my orders</h1></a>
+            </div>
+            <div class="btn-shop">
+                <a class="btn" href={homeUrl} >Continue shopping</a>
+            </div>
+        </div>
+
+    </template>
+
+</template>

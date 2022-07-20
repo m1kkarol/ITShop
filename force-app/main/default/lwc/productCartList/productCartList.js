@@ -16,10 +16,12 @@ export default class ProductCartList extends LightningElement {
     fullOrderPrice = 0;
     isLoading = false;
     renderCart = false;
+    url = "https://britenet14-dev-ed.my.site.com/ithshops/s/new-order";
 
     
 
     connectedCallback(){
+        this.isLoading = true;
         getCache()
         .then((result)=>{
             this.productCartList = result;
@@ -67,6 +69,8 @@ export default class ProductCartList extends LightningElement {
                     
                     this.fullOrderPrice = this.totalPrice + this.shipingPrice 
                     console.log(this.totalPrice);
+                    
+                    this.isLoading = false;
                 })
                 .catch((error)=>{
                     console.log(error);
