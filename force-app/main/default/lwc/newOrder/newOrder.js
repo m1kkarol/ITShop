@@ -14,6 +14,7 @@ import createNewContract from '@salesforce/apex/IT_NewOrderController.createNewC
 import getStandardPricebook from '@salesforce/apex/IT_NewOrderController.getStandardPricebook';
 import addOrderItem from '@salesforce/apex/IT_NewOrderController.addOrderItem';
 import clearCache from '@salesforce/apex/IT_NewOrderController.clearCache';
+import getAccount from '@salesforce/apex/IT_NewOrderController.getAccount';
 
 import getCache from '@salesforce/apex/IT_ProductCartListController.getCache';
 import getProductsDetails from '@salesforce/apex/IT_ProductCartListController.getProductsDetails';
@@ -38,8 +39,11 @@ export default class NewOrder extends LightningElement {
     shipingPrice = 5;
     fullOrderPrice = 0;
     isLoading = false;
+    accountId;
+    sfdcBaseURL;
+
+    url = window.location.origin + '/ithshops/s/order-history' 
     
-    homeUrl = "https://britenet14-dev-ed.my.site.com/ithshops/s/";
 
     isOrdered = false;
 
@@ -53,7 +57,9 @@ export default class NewOrder extends LightningElement {
         ];
     }
 
-
+    renderedCallback() {
+        this.sfdcBaseURL = window.location.origin;
+    }
   
     connectedCallback(){
         getCache()
@@ -96,7 +102,6 @@ export default class NewOrder extends LightningElement {
                     }
 
                     this.productCartList = this.allProducts;
-                    console.log(this.allProducts);
 
                     for(let i = 0; i<this.productCartList.length; i++){
                         this.totalPrice = this.productCartList[i].FullPrice + this.totalPrice;
@@ -104,32 +109,44 @@ export default class NewOrder extends LightningElement {
 
                     
                     this.fullOrderPrice = this.totalPrice + this.shipingPrice 
-                    console.log(this.totalPrice);
                     this.isLoading = false;
                 })
                 .catch((error)=>{
-                    console.log(error);
+                    this.dispatchEvent(
+                        new ShowToastEvent({
+                            title: error.body.message,
+                            variant: 'error'
+                        })
+                    );
                 }) 
 
            
         })
         .catch((error)=>{
-            console.log(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
+
+
+        })
+
+
+        getAccount({})
+        .then((result)=>{
+            this.accountId = result;
         })
     }
 
     async handleSubmit(event) { 
         
         event.preventDefault();
-        let contractId = await createNewContract({});
         let pricebookId = await getStandardPricebook({});
-        console.log(contractId);
-        console.log(pricebookId);
-
-        
+    
         const fields = event.detail.fields;
-        fields.AccountId = '0017Q00000NFXsDQAX';
-        fields.ContractId = contractId;
+        fields.AccountId = this.accountId;
         fields.EffectiveDate = this.dateFormat(new Date());
         fields.Status = 'Draft';
         fields.Pricebook2Id = pricebookId;
@@ -153,8 +170,12 @@ export default class NewOrder extends LightningElement {
             
         })
         .catch((error)=>{
-            console.log(error);
-
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
         })
     }
 
@@ -167,7 +188,6 @@ export default class NewOrder extends LightningElement {
         var yyyy = date.getFullYear();
 
         date = yyyy + '-' + mm + '-' + dd;
-        console.log(date);
 
         return date;
     }

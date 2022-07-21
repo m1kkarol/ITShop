@@ -1,5 +1,7 @@
 import { LightningElement,api, wire, track } from 'lwc';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent'
+import { publish, MessageContext } from 'lightning/messageService';
+import increaseSize from '@salesforce/messageChannel/Shopping_Cart__c';
 
 import getProductDetails from '@salesforce/apex/IT_ProductDetailsController.getProductDetails';
 import getImagesDetails from '@salesforce/apex/IT_ProductDetailsController.getDetailsImg';
@@ -9,6 +11,9 @@ import getProductPrice from '@salesforce/apex/IT_ProductDetailsController.getPro
 import getStandardPrice from '@salesforce/apex/IT_ProductDetailsController.getStandardPrice';
 import addProductToCart from '@salesforce/apex/IT_ProductDetailsController.addProductToCart';
 import getCache from '@salesforce/apex/IT_ProductDetailsController.getCache';
+import getCacheSize from '@salesforce/apex/IT_ProductCartListController.getCacheSize';
+
+
 import checkComments from '@salesforce/apex/IT_ProductDetailsController.checkComments';
 
 import Id from '@salesforce/user/Id';
@@ -34,7 +39,17 @@ export default class ProductDetails extends LightningElement {
     isLower = false;
     commentSection;
     renderAddComment;
+    cacheSize;
 
+    @wire(MessageContext)
+    messageContext;
+
+
+    handleIncreaseCart() {
+        const payload = { flag: 1};
+
+        publish(this.messageContext, increaseSize, payload);
+    }
 
     @wire(getProductDetails, {productId: '$recordId'}) product;
 
@@ -89,10 +104,15 @@ export default class ProductDetails extends LightningElement {
         getRatingValue({productId: this.recordId})
             .then((result) => {
                 this.ratingValue = Math.round(result[0].expr0);
-                console.log(this.ratingValue);
+               
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             });
 
         checkComments({userId: this.userId, productId: this.recordId})
@@ -105,7 +125,12 @@ export default class ProductDetails extends LightningElement {
                 }
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
         
     }
@@ -115,8 +140,11 @@ export default class ProductDetails extends LightningElement {
     }
     handleProdClick(){
         this.isLoading = true;
+        
+       
         addProductToCart({prodId: this.recordId, price: this.price, quantity: this.quantity})
             .then((result)=>{
+                this.handleIncreaseCart();
                 this.dispatchEvent(
                     new ShowToastEvent({
                     title: "Product Added!",
@@ -127,7 +155,12 @@ export default class ProductDetails extends LightningElement {
                 this.isLoading = false;
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
     }
 
@@ -135,7 +168,7 @@ export default class ProductDetails extends LightningElement {
         getCache()
         .then((result)=>{
             this.productsFromCache = result;
-            console.log(this.productsFromCache);
+           
         });
 
     
@@ -186,7 +219,12 @@ export default class ProductDetails extends LightningElement {
                 
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
             
     }

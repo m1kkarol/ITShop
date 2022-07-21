@@ -44,7 +44,6 @@ export default class NewPricebook extends LightningElement {
     handleSuccess(event){ 
         this.isAdded = true;
         this.recordId = event.detail.id;
-        console.log(this.recordId);
     }
 
     connectedCallback() { 
@@ -61,11 +60,16 @@ export default class NewPricebook extends LightningElement {
                     }
 
                     this.allData.push(productsPrice);
-                    console.log(this.allData);
+  
                 }
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
     }
 
@@ -75,7 +79,12 @@ export default class NewPricebook extends LightningElement {
                 this.allData = result;
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
     }
 
@@ -92,15 +101,19 @@ export default class NewPricebook extends LightningElement {
             for(let i = 0; i < selectedRecords.length; i++) {
                 productIds.push(selectedRecords[i].ProductId);
             }
-            console.log(productIds);
-            console.log(this.recordId);
+
 
             addProducts({pricebookId: this.recordId, productId: productIds})
             .then((result)=>{
-                console.log('udalo sie');
+
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
         }
     
@@ -117,7 +130,6 @@ export default class NewPricebook extends LightningElement {
 
     handlePercentage(event){
         this.percentage = event.target.value;
-        console.log(this.percentage);
         
     }   
     
@@ -128,7 +140,6 @@ export default class NewPricebook extends LightningElement {
 
     handleCheckbox(event) {
         this.isChecked = !this.isChecked;
-        console.log(this.isChecked);
     }
 
     handleRowAction(event) {
@@ -137,7 +148,6 @@ export default class NewPricebook extends LightningElement {
 
         switch(actionName) {
             case 'show_details':
-                console.log('test');
                 break;
             default: 
         }  

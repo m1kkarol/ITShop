@@ -91,7 +91,7 @@ export default class ProductSearchPanel extends LightningElement {
                         this.disabledFirst = true;
                     }
                      
-                    console.log(this.data.length);
+                   
                     this.handleMaxPages();
 
                     
@@ -113,7 +113,7 @@ export default class ProductSearchPanel extends LightningElement {
     
                 })
                 .catch((error) => {
-                    console.log('test');
+                   
                     
                 })
     
@@ -158,8 +158,6 @@ export default class ProductSearchPanel extends LightningElement {
         
         this.pageForDisplay = this.pageNumber + 1;
 
-        console.log('Current: ' + this.pageNumber);
-        console.log('all ' + this.allPages);
 
         if(this.pageNumber + 1=== this.allPages) { 
             this.disabledLast = true;
@@ -199,8 +197,7 @@ export default class ProductSearchPanel extends LightningElement {
         this.pageForDisplay = this.pageNumber + 1;
 
         
-        console.log('Current: ' + this.pageNumber);
-        console.log('all ' + this.allPages);
+    
         
         if(this.pageNumber + 1 === this.allPages) { 
             this.disabledLast = true;

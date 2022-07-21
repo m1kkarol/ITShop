@@ -22,8 +22,6 @@ export default class AllProducts extends LightningElement {
         getAllProducts()
         .then((result )=> {
             this.allProducts = result;
-            console.log(this.allProducts);
-
         })
     }
 
@@ -33,7 +31,12 @@ export default class AllProducts extends LightningElement {
                 this.allProducts = result;
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
     }
 
@@ -57,15 +60,19 @@ export default class AllProducts extends LightningElement {
             for(let i = 0; i < selectedRecords.length; i++) {
                 productIds.push(selectedRecords[i].Id);
             }
-            console.log(productIds);
-            console.log(this.record);
+   
 
             addProducts({pricebookId: this.record, productId: productIds})
             .then((result)=>{
-                console.log('udalo sie');
+
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
         }
 

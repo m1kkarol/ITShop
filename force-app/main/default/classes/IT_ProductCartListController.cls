@@ -14,6 +14,19 @@ public with sharing class IT_ProductCartListController {
     }
 
     @AuraEnabled
+    public static Integer getCacheSize(){
+        List<ProductCartWrapper> allProducts = new List<ProductCartWrapper>();
+
+        if(Cache.Session.contains('ShopingCart')) {
+             allProducts =  (List<ProductCartWrapper>)Cache.Session.get('ShopingCart');
+        } else{
+            System.debug('empty');
+        }
+
+        return allProducts.size();
+    }
+
+    @AuraEnabled
     public static List<Product2> getProductsDetails(List<String> productIds) {
         List<Product2> prodDetails = new List<Product2>();
         System.debug(productIds);

@@ -15,10 +15,14 @@ export default class EditCommentModal extends LightningElement {
         getCommentToEdit({commentId: this.comment})
             .then((result)=>{
                 this.commentToEdit = result;
-                console.log(this.commentToEdit);
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
     }
 
@@ -32,7 +36,12 @@ export default class EditCommentModal extends LightningElement {
                 this.dispatchEvent(closeModal);
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
 
     

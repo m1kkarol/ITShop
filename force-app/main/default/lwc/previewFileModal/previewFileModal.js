@@ -13,7 +13,6 @@ export default class PreviewFileModal extends LightningElement {
     }
 
     @api show() { 
-        console.log('###showFrame : ' + this.fileExtension);
         if(this.fileExtension === "pdf") this.showFrame = true;
         else this.showFrame = false;
         this.showModal = true;

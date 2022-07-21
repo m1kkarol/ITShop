@@ -56,10 +56,9 @@ export default class EditProduct extends LightningElement {
             .then((result) =>{
                 this.price = result;
                 
-                console.log(this.price);
+
             })
             .catch((error) => {
-                console.log('error');
             })
 
         getImg({prodId: this.recordId})
@@ -67,7 +66,8 @@ export default class EditProduct extends LightningElement {
                 this.imageId = result;
             })
             .catch((error)=>{
-                console.log(error);
+
+
             })
             
             this.handleImg();
@@ -77,12 +77,9 @@ export default class EditProduct extends LightningElement {
 
     closeModal(){
         this.isModalOpen = false;
-        console.log(this.recordId);
-        console.log('est');
     }
 
     handleSuccess(){
-        console.log('test');
     }
     handlePriceChange(event) {
         this.price = event.target.value;
@@ -209,12 +206,15 @@ export default class EditProduct extends LightningElement {
        
             updateProfileImg({prodId: this.recordId, imgUrl: this.imageId})
             .then((result) => {
-                console.log('test');
-                
                 this.handleImg();
             })
             .catch((error) => {
-                console.log('nie work');
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
         
 

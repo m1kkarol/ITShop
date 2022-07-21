@@ -65,7 +65,6 @@ export default class NewProduct extends LightningElement {
         this.isLoading = !this.isLoading;
         this.recordId = event.detail.id;
 
-        console.log(this.price);
 
         if(this.price == undefined) {
             this.isLoading = false;

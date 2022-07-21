@@ -96,11 +96,16 @@ export default class PricebookSearchPanel extends LightningElement {
         getPricebooks({pricebookName: this.pricebookName})
             .then((result) => {
                 this.allPricebooks = result;
-                console.log(this.allPricebooks);
+                
                 this.isLoading = false;
             })
             .catch((error) => {
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             } ) 
             
         }
@@ -110,10 +115,6 @@ export default class PricebookSearchPanel extends LightningElement {
         this.isModalOpen = true;
     }    
 
-
-    navigateToRecordPage(event) {
-      console.log('test');
-    }
 
     clearTable(){
         this.isLoaded = false;
