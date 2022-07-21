@@ -17,13 +17,18 @@ export default class RecentlyViewProducts extends LightningElement {
                 this.newestProducts = result;
                 this.firstProduct = this.newestProducts[0];
                 this.secondProduct = this.newestProducts[1];
-                console.log(this.newestProducts);
+             
                 this.createUrlForDetails();
             
                 
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
             
     }
@@ -34,8 +39,7 @@ export default class RecentlyViewProducts extends LightningElement {
             this.currentNumber -= 1;
             this.nextNumber -= 1;
         }
-        console.log(this.currentNumber);
-        console.log(this.nextNumber);
+ 
         
         this.firstProduct = this.newestProducts[this.currentNumber];
         this.secondProduct = this.newestProducts[this.nextNumber];
@@ -51,8 +55,7 @@ export default class RecentlyViewProducts extends LightningElement {
             this.currentNumber += 1;
             this.nextNumber +=1;
         }
-        console.log(this.currentNumber);
-        console.log(this.nextNumber);
+       
         this.firstProduct = this.newestProducts[this.currentNumber];
         this.secondProduct = this.newestProducts[this.nextNumber];
         this.isLoading = false;

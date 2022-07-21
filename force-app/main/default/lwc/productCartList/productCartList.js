@@ -3,6 +3,8 @@ import { LightningElement, wire, track  } from 'lwc';
 
 import getCache from '@salesforce/apex/IT_ProductCartListController.getCache';
 import getProductsDetails from '@salesforce/apex/IT_ProductCartListController.getProductsDetails';
+import { publish, MessageContext } from 'lightning/messageService';
+import recordSelected from '@salesforce/messageChannel/Pricebook_Details__c';
 
 export default class ProductCartList extends LightningElement {
     
@@ -16,9 +18,13 @@ export default class ProductCartList extends LightningElement {
     fullOrderPrice = 0;
     isLoading = false;
     renderCart = false;
-    url = "https://britenet14-dev-ed.my.site.com/ithshops/s/new-order";
+    url;
 
-    
+
+    renderedCallback() {
+        this.url = window.location.origin + '/ithshops/s/new-order';
+    }
+
 
     connectedCallback(){
         this.isLoading = true;
@@ -60,7 +66,7 @@ export default class ProductCartList extends LightningElement {
                     }
 
                     this.productCartList = this.allProducts;
-                    console.log(this.allProducts);
+                    
 
                     for(let i = 0; i<this.productCartList.length; i++){
                         this.totalPrice = this.productCartList[i].FullPrice + this.totalPrice;
@@ -68,18 +74,28 @@ export default class ProductCartList extends LightningElement {
 
                     
                     this.fullOrderPrice = this.totalPrice + this.shipingPrice 
-                    console.log(this.totalPrice);
+                  
                     
                     this.isLoading = false;
                 })
                 .catch((error)=>{
-                    console.log(error);
+                    this.dispatchEvent(
+                        new ShowToastEvent({
+                            title: error.body.message,
+                            variant: 'error'
+                        })
+                    );
                 }) 
 
             
         })
         .catch((error)=>{
-            console.log(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
         })
        
     }
@@ -98,7 +114,12 @@ export default class ProductCartList extends LightningElement {
             this.isLoading = false;
             })
         .catch((error)=>{
-            console.log(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
         })
     }
 
@@ -117,7 +138,7 @@ export default class ProductCartList extends LightningElement {
         getCache()
         .then((result)=>{
             this.productCartList = result;
-            console.log(this.productCartList);
+            
             this.totalPrice = 0;
             
 
@@ -156,7 +177,7 @@ export default class ProductCartList extends LightningElement {
                     }
 
                     this.productCartList = this.allProducts;
-                    console.log(this.allProducts);
+                  
 
                     for(let i = 0; i<this.productCartList.length; i++){
                         this.totalPrice = this.productCartList[i].FullPrice + this.totalPrice;
@@ -164,18 +185,28 @@ export default class ProductCartList extends LightningElement {
 
                     
                     this.fullOrderPrice = this.totalPrice + this.shipingPrice 
-                    console.log(this.totalPrice);
+                    
 
                     this.isLoading = false;
                 })
                 .catch((error)=>{
-                    console.log(error);
+                    this.dispatchEvent(
+                        new ShowToastEvent({
+                            title: error.body.message,
+                            variant: 'error'
+                        })
+                    );
                 }) 
 
             
         })
         .catch((error)=>{
-            console.log(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
         }) 
       
     }

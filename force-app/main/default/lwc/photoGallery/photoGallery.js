@@ -18,7 +18,7 @@ export default class PhotoGallery extends LightningElement {
             
         })
         .catch((error)=>{
-            console.log(error);
+
         })
         
         this.handleImg();

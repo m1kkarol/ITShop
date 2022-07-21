@@ -92,12 +92,17 @@ export default class PricebookDetails extends LightningElement {
 
 
                     this.allData.push(productsPrice);
-                    console.log(this.curr);
-                    console.log(this.allData.NewPrice);
+                    
+                   
             }
         })
         .catch((error) =>{
-            console.log(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
         })
     }
 
@@ -129,12 +134,16 @@ export default class PricebookDetails extends LightningElement {
 
 
                     this.allData.push(productsPrice);
-                    console.log(this.allData.NewPrice);
-                    console.log(this.percentage);
+                 
             }
         })
         .catch((error) =>{
-            console.log(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
         })
   
     }   
@@ -157,19 +166,23 @@ export default class PricebookDetails extends LightningElement {
 
 
                     this.allData.push(productsPrice);
-                    console.log(this.curr);
-                    console.log(this.allData.NewPrice);
+                    
             }
         })
         .catch((error) =>{
-            console.log(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
         })
       
     }
 
     handleCheckbox(event) {
         this.isChecked = !this.isChecked;
-        console.log(this.isChecked);
+        
     }
 
     
@@ -190,7 +203,7 @@ export default class PricebookDetails extends LightningElement {
 
     handleCloseModale(event) {
         this.isAllProducts = event.detail;
-        console.log('test');
+  
 
         this.getAllPricebooks(this.recordId);
     }
@@ -203,7 +216,7 @@ export default class PricebookDetails extends LightningElement {
             for(let i = 0; i < selectedRecords.length; i++) {
                 entryId.push(selectedRecords[i].Id);
             }  
-            console.log(entryId);
+          
             
         
             if(this.useAmount){
@@ -259,7 +272,7 @@ export default class PricebookDetails extends LightningElement {
 
 
                     this.allData.push(productsPrice);
-                    console.log(this.allData);
+                    
             }
                     
                     
@@ -288,7 +301,7 @@ export default class PricebookDetails extends LightningElement {
 
 
                     this.allData.push(productsPrice);
-                    console.log(this.allData);
+                  
                     }
                 })
             }
@@ -314,11 +327,11 @@ export default class PricebookDetails extends LightningElement {
 
 
                     this.allData.push(productsPrice);
-                    console.log(this.allData[i].Id);
+   
             }
         })
         .catch((error) =>{
-            console.log(error);
+
         })
     }
 

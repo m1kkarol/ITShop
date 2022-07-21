@@ -54,19 +54,24 @@ export default class ProductReviews extends LightningElement {
                     this.reviews.push(productReviews);
                     
                 } 
-                console.log(JSON.parse(JSON.stringify(this.reviews)));
+                
             
                 
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
     }
 
     handleDelComment(event) {
         var commentId = event.target.dataset.id;
         this.comment = commentId;
-        console.log(this.comment);
+        
         this.isModalOpen = true;
 
     }
@@ -114,7 +119,12 @@ export default class ProductReviews extends LightningElement {
            
         })
         .catch((error) =>{
-            console.log(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
         })
          
     }

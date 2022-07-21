@@ -17,7 +17,12 @@ export default class NewestProducts extends LightningElement {
                      
             })
             .catch((error)=>{
-                console.log(error);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
             
             
@@ -27,7 +32,8 @@ export default class NewestProducts extends LightningElement {
         if(this.currentNumber != 0) {
             this.currentNumber -= 1;
         }
-        console.log(this.currentNumber);
+
+
         this.firstProduct = this.newestProducts[this.currentNumber];
         this.createUrlForDetails();
     }
@@ -37,12 +43,11 @@ export default class NewestProducts extends LightningElement {
         if(this.currentNumber != (this.newestProducts.length - 1)) {
             this.currentNumber += 1;
         }
-        console.log(this.currentNumber);
         this.firstProduct = this.newestProducts[this.currentNumber];
         this.createUrlForDetails();
     }
 
     createUrlForDetails() {
-       this.url = 'https://britenet14-dev-ed.my.site.com/ithshops/s/product/' + this.firstProduct.Id;
+       this.url = window.location.origin + '/ithshops/s/product/' + this.firstProduct.Id;
     }
 }

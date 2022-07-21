@@ -90,9 +90,7 @@ export default class PreviewFileThumbnailCard extends LightningElement {
 
 
   handleDeleteImg(event) {
-    console.log(this.file.ContentDocumentId);
-
-    
+ 
     deleteImg({imgId: this.file.ContentDocumentId})
       .then((result) => {
         

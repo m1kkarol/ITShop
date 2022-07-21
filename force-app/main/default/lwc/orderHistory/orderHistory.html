@@ -1,0 +1,9 @@
+<template>
+    <div class="slds-scrollable_y container" style="max-height: 600px">
+        <template for:each={orders} for:item="order">
+            <div key={order.Id} style="max-width: 630px; margin-left: 230px; margin-bottom: 10px ">
+                <c-order-history-item order={order}></c-order-history-item>
+            </div>
+        </template>
+    </div>
+</template>

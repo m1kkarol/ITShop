@@ -17,6 +17,13 @@ public with sharing class IT_NewOrderController {
     }
 
     @AuraEnabled
+    public static Id getAccount(){
+        Account account = [SELECT Id FROM Account WHERE Name = 'Shop Account'];
+
+        return account.Id;
+    }
+
+    @AuraEnabled
     public static Id getStandardPricebook(){
         Pricebook2 pricebook = new Pricebook2();
 
