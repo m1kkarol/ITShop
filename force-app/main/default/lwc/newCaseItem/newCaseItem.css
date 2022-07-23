@@ -1,0 +1,9 @@
+.table-column{
+    font-weight: 300;
+    
+}
+
+td{
+    border-bottom: 1px solid black;
+    text-align: center;
+}

@@ -6,6 +6,7 @@ export default class OrderHistoryItem extends LightningElement {
     order;
 
     isModalOpen = false;
+    isCaseOpen = false;
 
     openDetails(){
         this.isModalOpen = true;
@@ -14,4 +15,13 @@ export default class OrderHistoryItem extends LightningElement {
     handleCloseModal(){
         this.isModalOpen = false;
     }
+
+    handleOpenCase(){
+        this.isCaseOpen = true;
+    }
+
+    handleCloseCase(){
+        this.isCaseOpen = false;
+    }
+
 }

@@ -3,6 +3,7 @@
        
             <lightning-card title="Order">
             <lightning-button label="Details" slot="actions" variant="brand" onclick={openDetails}></lightning-button>
+            <lightning-button class="slds-p-left_medium" label="Make Complaint" slot="actions" variant="brand" onclick={handleOpenCase}></lightning-button>
             <p class="slds-p-horizontal_small"><span style="font-weight: bold">Order Number:</span> {order.OrderNumber}</p>
             <p class="slds-p-horizontal_small"><span style="font-weight: bold">Total Amount:</span> {order.TotalAmount}€</p>
             <p class="slds-p-horizontal_small"><span style="font-weight: bold">Date:</span> {order.EffectiveDate}</p>
@@ -13,5 +14,9 @@
 
     <template if:true={isModalOpen}>
         <c-order-details-modal order-id={order.Id} onclosemodal={handleCloseModal}></c-order-details-modal>
+    </template>
+    
+    <template if:true={isCaseOpen}>
+        <c-new-case-modal order-id={order.Id} onclosecase={handleCloseCase}></c-new-case-modal>
     </template>
 </template>

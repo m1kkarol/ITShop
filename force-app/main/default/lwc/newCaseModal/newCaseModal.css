@@ -1,0 +1,13 @@
+.table-column{
+    font-weight: 300;
+}
+
+td{
+    border-bottom: 1px solid black;
+}
+
+.slds-modal__container{
+    width: 70% !important; 
+    max-width: 70rem; 
+    min-width: 20rem;
+}
