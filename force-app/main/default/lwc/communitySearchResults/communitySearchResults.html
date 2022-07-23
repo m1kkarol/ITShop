@@ -1,0 +1,55 @@
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+            </lightning-spinner>
+        </template>
+    </div>
+    <div class="demo-only demo-only--sizing slds-grid slds-wrap" style="max-width: 870px; margin-left:126px">
+        <div class="slds-size_1-of-3">
+            <div class=" slds-box_x-small slds-text-align_center ">
+                <lightning-input type="text" value={prodModel} label="Product Model" onchange={handleProdModel}>
+                </lightning-input>
+            </div>
+        </div>
+        <div class="slds-size_1-of-3">
+            <div class=" slds-box_x-small slds-text-align_center">
+                <lightning-input type="text" value={prodBrand} label="Product Brand" onchange={handleProdBrand}>
+                </lightning-input>
+            </div>
+        </div>
+        <div class="slds-size_1-of-3">
+            <div class=" slds-box_x-small slds-text-align_center">
+                <lightning-combobox name="family" value={prodFamily} label="Product Family" onchange={handleProdFamily}
+                    options={options}>
+                </lightning-combobox>
+            </div>
+        </div>
+    </div>
+    <div class="slds-align_absolute-center">
+        <lightning-button label="Search" onclick={handleSearchKeyword} variant="brand"></lightning-button>
+    </div>
+    <div class="slds-align_absolute-center slds-var-m-top_small">
+        
+        <lightning-button class="slds-var-m-left_small" disabled={disabledPrev} label="Previous" onclick={previous}></lightning-button>
+        <lightning-button class="slds-var-m-left_small" disabled={disabledNext} label="Next" onclick={next}></lightning-button>
+    
+    </div>
+    <div class="slds-align_absolute-center slds-var-m-top_small"><h1 style="font-size: 18px !important">{currentPage}/{allPages}</h1></div>
+
+    <template if:true={renderProd}>
+        <div class="container">
+            <template for:each={products} for:item="prod">
+                <div class="product" key={prod.Id} style="margin-top: 20px">
+
+                    <c-product-item product={prod}></c-product-item>
+                </div>
+            </template>
+        </div>
+    </template>
+   
+    <template if:false={renderProd}>
+        
+    </template>
+
+</template>
