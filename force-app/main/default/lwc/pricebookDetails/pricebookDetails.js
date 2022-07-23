@@ -331,7 +331,12 @@ export default class PricebookDetails extends LightningElement {
             }
         })
         .catch((error) =>{
-
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: error.body.message,
+                    variant: 'error'
+                })
+            );
         })
     }
 

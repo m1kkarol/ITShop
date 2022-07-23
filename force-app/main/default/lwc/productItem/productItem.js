@@ -19,6 +19,7 @@ export default class ProductItem extends LightningElement {
             this.price = Math.round(data[0].expr0 * 100) / 100;
             
             
+            
         }
     }
 

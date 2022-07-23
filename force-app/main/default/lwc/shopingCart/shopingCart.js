@@ -1,6 +1,7 @@
 import { LightningElement, wire } from 'lwc';
 
 import getCacheSize from '@salesforce/apex/IT_ProductCartListController.getCacheSize';
+import cartIcon from '@salesforce/resourceUrl/ShoppinCart';
 
 import {
     subscribe,
@@ -14,6 +15,7 @@ export default class ShopingCart extends LightningElement {
 
     shopingUrl;
     cartSize;
+    cart = cartIcon;
 
     renderedCallback(){
         this.shopingUrl = window.location.origin + '/ithshops/s/shoping-cart'

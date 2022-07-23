@@ -4,7 +4,7 @@ public with sharing class IT_NewOrderController {
     public static Id createNewContract(){
         Contract contract = new Contract();
 
-        contract.AccountId = '0017Q00000NFXsDQAX';
+        contract.AccountId = getAccount();
         contract.Status = 'Draft';
         contract.StartDate = Date.today();
         contract.ContractTerm = 1;

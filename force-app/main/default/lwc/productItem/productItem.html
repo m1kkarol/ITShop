@@ -4,9 +4,10 @@
         <ul class="listing">
             <li class="product">
                 <a class="img-wrapper" href={url}>
+                 
                     <img style="max-width: 88%" src={product.DisplayUrl} alt={product.Name} />
                 </a>
-                <div class="title" if:true={isLower}><h2 style="color: rgb(3, 3, 3); font-size: 13px"><del>€{oldPrice}</del></h2></div> 
+                <div class="title" if:true={isLower}><h2 style="color: rgb(3, 3, 3); font-size: 13px"><del>€{oldPrice} </del></h2></div> 
                 <div class="title"><h2 style="color: rgb(160, 11, 23); font-size: 25px; font-weight: 300">€{price}</h2></div> 
             
                 <div class="info">
@@ -16,6 +17,7 @@
                 </div>
         
             </li>
+            
         </ul>
     </template>
 </template>

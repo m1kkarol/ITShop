@@ -16,14 +16,9 @@ public without sharing class IT_ProductDetailsController {
 
     @AuraEnabled(cacheable = true) 
     public static List<ContentVersion> getDetailsImg(String productId){
-            return [
-        SELECT
-                Id,
-                ContentDocumentId,
-                FirstPublishLocationId
-        FROM ContentVersion
-        WHERE FirstPublishLocationId =:productId
-        ];
+
+        String query = 'SELECT Id, ContentDocumentId, LinkedEntityId FROM ContentDocumentLink WHERE LinkedEntityId = :productId';
+    return Database.query(query);
     
     }
 
