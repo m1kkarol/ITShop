@@ -16,6 +16,7 @@ export default class ProductItem extends LightningElement {
     @wire(getProductPrice, {productId: '$product.Id'})
     getPrice({error, data}){
         if(data){
+            
             this.price = Math.round(data[0].expr0 * 100) / 100;
             
             
@@ -26,6 +27,7 @@ export default class ProductItem extends LightningElement {
     @wire(getStandardPrice, {productId: '$product.Id'})
     getOldPrice({error, data}){
         if(data){
+            
             this.oldPrice = Math.round(data.UnitPrice * 100) / 100;
             
             if(this.oldPrice > this.price){

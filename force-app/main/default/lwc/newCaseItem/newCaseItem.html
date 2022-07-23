@@ -1,0 +1,49 @@
+<template>
+   
+    <table style="width:90%; margin-left: 3%; margin-top: 10%; margin-right: 10%;">
+        <tr>
+            <td>
+                <h1 class="table-column"></h1>
+            </td>
+            <td>
+                <h1 class="table-column">Product</h1>
+            </td>
+            <td>
+                <h1 class="table-column">Description</h1>
+            </td>
+            <td>
+                <h1 style="margin-left: 20px" class="table-column">Type</h1>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 100px "><img style="max-width: 150px; max-height: 150px" src={orderItem.displayUrl} /></td>
+            <td style="width: 100px ">{orderItem.productName} {orderItem.productModel}</td>
+            <td style="width: 150px ">
+                <textarea 
+                    id="description"
+                    style="margin-left: 20px; min-height: 60px; width:250px; resize:none; border-radius: 8px " 
+                    class="text-area" 
+                    label="Add comment" 
+                    placeholder="Type here..." 
+                    onchange={handleDescription}
+                    value={description}
+                    name="description">
+                </textarea>
+            </td>
+            <td style="width: 100px ">
+                <lightning-combobox 
+                    id="caseReason"
+                    style="margin-bottom: 20px ; margin-left: 15px" 
+                    name="type" value={caseReason}  
+                    onchange={handleCaseReason}
+                    options={options}
+                    >
+                </lightning-combobox>
+            </td>
+            
+        
+        </tr>
+        </table>
+    </template>
+        
+</template>
