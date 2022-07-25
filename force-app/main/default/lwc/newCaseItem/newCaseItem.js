@@ -12,6 +12,7 @@ export default class NewCaseItem extends LightningElement {
         return [
             { label: 'Payment', value: 'payment' },
             { label: 'Technical', value: 'technical' },
+            { label: 'Shipment', value: 'shipment' },
             { label: 'Other', value: 'other' },
         ];
     }

@@ -70,6 +70,13 @@ export default class NewCaseModal extends LightningElement {
                     }.bind(this), 1200);
                     
                 })
+        } else{
+            const evt = new ShowToastEvent({
+                title: '',
+                message: 'You need to fill description and reason type.',
+                variant: 'info',
+            });
+            this.dispatchEvent(evt);
         }
 
     }

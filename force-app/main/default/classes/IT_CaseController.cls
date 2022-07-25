@@ -52,6 +52,12 @@ public with sharing class IT_CaseController {
     @AuraEnabled
     public static void createCase(String productsCase){
     
+        AssignmentRule AR = new AssignmentRule();
+        AR = [SELECT Id FROM AssignmentRule WHERE SobjectType = 'Case' AND Active = true LIMIT 1];
+
+
+        Database.DMLOptions dmlOpts = new Database.DMLOptions();
+        dmlOpts.assignmentRuleHeader.assignmentRuleId = AR.Id;
 
         List<Object> cases = (List<Object>)JSON.deserializeUntyped(productsCase);
         List<Case> newCases = new List<Case>();
@@ -73,7 +79,7 @@ public with sharing class IT_CaseController {
             productCase.Status = 'New';
             productCase.Origin = 'Web';
             productCase.ProductId = productId;
-
+            productCase.setOptions(dmlOpts);
         
 
         

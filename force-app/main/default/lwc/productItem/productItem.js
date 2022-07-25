@@ -19,23 +19,17 @@ export default class ProductItem extends LightningElement {
             
             this.price = Math.round(data[0].expr0 * 100) / 100;
             
+            getStandardPrice({productId: this.product.Id})
+                .then((result)=>{
+                    this.oldPrice = Math.round(result.UnitPrice * 100) / 100;
             
-            
-        }
-    }
-
-    @wire(getStandardPrice, {productId: '$product.Id'})
-    getOldPrice({error, data}){
-        if(data){
-            
-            this.oldPrice = Math.round(data.UnitPrice * 100) / 100;
-            
-            if(this.oldPrice > this.price){
-            this.isLower = true;
-        } else{
-            this.price = this.oldPrice;
-            this.isLower = false;
-        }
+                    if(this.oldPrice > this.price){
+                    this.isLower = true;
+                } else{
+                    this.price = this.oldPrice;
+                    this.isLower = false;
+                }
+                })
             
         }
     }

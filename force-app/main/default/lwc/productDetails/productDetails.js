@@ -81,25 +81,22 @@ export default class ProductDetails extends LightningElement {
     getPrice({error, data}){
         if(data){
             this.price = Math.round(data[0].expr0 * 100) / 100;
+
+            getStandardPrice({productId: this.recordId})
+                .then((result)=>{
+                    this.oldPrice = Math.round(result.UnitPrice * 100) / 100;
+            
+                    if(this.oldPrice > this.price){
+                    this.isLower = true;
+                } else{
+                    this.price = this.oldPrice;
+                    this.isLower = false;
+                }
+                })
             
         }
     }
     
-    @wire(getStandardPrice, {productId: '$recordId'})
-    getOldPrice({error, data}){
-        if(data){
-            this.oldPrice = Math.round(data.UnitPrice * 100) / 100;
-            
-            if(this.oldPrice > this.price){
-            this.isLower = true;
-        } else{
-            this.price = this.oldPrice;
-            this.isLower = false;
-        }
-            
-        }
-    }
-
     connectedCallback() { 
         getRatingValue({productId: this.recordId})
             .then((result) => {

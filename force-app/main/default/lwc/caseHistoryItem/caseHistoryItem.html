@@ -1,0 +1,42 @@
+<template>
+    <template if:true={caseHistoryItem}>
+        
+
+        <div class="slds-grid slds-wrap" style="border-bottom: 1px solid black; border-top: 1px solid black">
+            <span><img style="max-width: 150px; max-height: 150px" src={caseHistoryItem.displayUrl} /></span>
+            <div class="slds-col slds-size_2-of-6 lds-text-heading_medium slds-text-align_left slds-m-top_medium">
+              <p class="slds-m-top_xx-small">
+                CASE NO: <b>{caseHistoryItem.caseNumber}</b><br>
+              </p>
+              <p class="slds-m-top_xx-small">
+                DATE: <b><lightning-formatted-date-time value={caseHistoryItem.createdDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                    minute="2-digit" time-zone="UTC" time-zone-name="short" hour12={ampm}></lightning-formatted-date-time></b><br>
+              </p>
+              <p class="slds-m-top_xx-small ">
+                STATUS: <b>{caseHistoryItem.status}</b>
+              </p>
+              <p class="slds-m-top_xx-small ">
+                PRODUCT: <b>{caseHistoryItem.productName} {caseHistoryItem.productModel}</b>
+              </p>
+            </div>
+            <div class="slds-col slds-size_2-of-6 lds-text-heading_small slds-text-align_left slds-m-top_medium">
+                <p class="slds-m-top_xx-small ">
+                    REASON: <b>{caseHistoryItem.reason}</b> 
+                </p>
+                <p class="slds-m-top_xx-small ">
+                    DESCRIPTION: <b>{caseHistoryItem.description}</b> 
+                </p>
+
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+              <span></span>
+            </div>
+            <div class="slds-col slds-size_1-of-6 ">
+                
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+              
+            </div>
+          </div>
+    </template>
+</template>

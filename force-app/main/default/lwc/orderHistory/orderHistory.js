@@ -8,12 +8,17 @@ export default class OrderHistory extends LightningElement {
 
     userId = Id;
     orders;
+    renderOrders;
     
     @wire(getOrders, {userId: '$userId'})
     getOrders({error,data}){
         if(data){
             this.orders = data;
-            console.log(this.orders);
+            if(this.orders.length > 0){
+                this.renderOrders = true;
+            } else{
+                this.renderOrders = false;
+            }
             
         } else if(error){
             this.dispatchEvent(
