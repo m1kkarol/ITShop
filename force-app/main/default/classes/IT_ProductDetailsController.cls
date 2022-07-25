@@ -103,7 +103,7 @@ public without sharing class IT_ProductDetailsController {
 
     }
 
-    @AuraEnabled(cacheable = true)
+    @AuraEnabled
     public static PricebookEntry getStandardPrice(String productId){
         PricebookEntry standardPrice = [SELECT UnitPrice FROM PricebookEntry WHERE Pricebook2.isStandard = true AND Product2Id =: productId LIMIT 1];
         return standardPrice;

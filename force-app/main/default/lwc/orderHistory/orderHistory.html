@@ -1,9 +1,14 @@
 <template>
-    <div class="slds-scrollable_y container" style="max-height: 600px">
-        <template for:each={orders} for:item="order">
-            <div key={order.Id} style="max-width: 630px; margin-left: 230px; margin-bottom: 10px ">
-                <c-order-history-item order={order}></c-order-history-item>
-            </div>
-        </template>
-    </div>
+    <template if:true={renderOrders}>
+        <div class="slds-scrollable_y container" style="max-height: 600px">
+            <template for:each={orders} for:item="order">
+                <div key={order.Id} style="max-width: 800px; margin-left: 130px; margin-bottom: 10px ">
+                    <c-order-history-item order={order}></c-order-history-item>
+                </div>
+            </template>
+        </div>
+    </template>
+    <template if:false={renderOrders}>
+        <div class="slds-align_absolute-center slds-scrollable_y">You don't have any orders yet.</div>
+    </template> 
 </template>

@@ -4,24 +4,31 @@
       
             <header class="slds-modal__header">
     
-                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Make Complaint<br><br></h2> 
-                <h5 class="slds-text-heading_small slds-hyphenate">To make complaint fill description and choose reason type</h5>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Order complaint history<br><br></h2> 
+                
             </header>
             <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                 <template if:false={isAdded}>
 
-                        <template for:each={orderDetails} for:item="item">
-                            
-                                <c-new-case-item key={item.Id}  order-item={item} ></c-new-case-item>
-                        </template>
+                    <template if:true={renderHistory}>
+                       <template for:each={caseHistory} for:item="caseHis">
+                        <div key={caseHis.Id} style="max-width: 800px; margin-left: 130px; margin-bottom: 10px ">
+                            <c-case-history-item key={caseHis.Id} case-history-item={caseHis}></c-case-history-item>
+                        </div>
+                    </template>
+                       </template>
+                       <template if:false={renderHistory}>
+                        <div class="slds-align_absolute-center slds-scrollable_y">You don't make any complaints yet.</div>
+                    </template>
 
                     <footer style="margin-top: 10px"> 
                         <div class="slds-grid slds-grid_align-center">
                             <lightning-button class="slds-m-right_small" label="Close" onclick={closeModal}></lightning-button>
-                            <lightning-button class="slds-m-right_small" variant="brand" label="Submit" onclick={handleSubmit}></lightning-button>
                         </div>
                     </footer>
-                </template>
+                
+                
+            </template>
             </div>
 
    
