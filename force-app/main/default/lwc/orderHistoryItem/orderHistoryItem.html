@@ -5,6 +5,7 @@
             <lightning-button label="Details" slot="actions" variant="brand" onclick={openDetails}></lightning-button>
             <lightning-button class="slds-p-left_medium" label="Make Complaint" slot="actions" variant="brand" onclick={handleOpenCase}></lightning-button>
             <lightning-button class="slds-p-left_medium" label="Complaint History" slot="actions" variant="brand" onclick={handleOpenCaseHistory}></lightning-button>
+            <img src={orderIcon} slot="actions" style="position: absolute ;max-height: 50px; max-width: 50px; top: 65px; left: 741px"/>
             <p class="slds-p-horizontal_small"><span style="font-weight: bold">Order Number:</span> {order.OrderNumber}</p>
             <p class="slds-p-horizontal_small"><span style="font-weight: bold">Total Amount:</span> {order.TotalAmount}€</p>
             <p class="slds-p-horizontal_small"><span style="font-weight: bold">Date:</span> {order.EffectiveDate}</p>

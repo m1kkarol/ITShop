@@ -1,5 +1,5 @@
 import { LightningElement } from 'lwc';
-
+import {ShowToastEvent} from 'lightning/platformShowToastEvent'
 import getProductList from '@salesforce/apex/IT_CommunitySearchResultController.getProductList';
 
 export default class CommunitySearchResults extends LightningElement {
@@ -52,8 +52,7 @@ export default class CommunitySearchResults extends LightningElement {
             this.products.push(this.allProducts[i]);
         }
 
-        this.allPages = Math.ceil((this.allProducts.length / 6));
-
+           this.allPages = Math.ceil((this.allProducts.length / 6));
 
         if(this.products.length > 0){
             this.renderProd = true;
@@ -78,6 +77,9 @@ export default class CommunitySearchResults extends LightningElement {
         this.isLoading = true;
         getProductList({prodBrand: this.prodBrand, prodModel: this.prodModel, prodFamily: this.prodFamily, offset: this.offset})
             .then((result)=>{
+
+                
+
                 this.disabledNext = false;
                 this.disabledPrev = false;
 
@@ -86,6 +88,13 @@ export default class CommunitySearchResults extends LightningElement {
                 }
                 
                 this.products = result;
+
+                if(this.products.length < 6){
+                    this.allPages = 1;
+                }else{
+                    this.allPages = Math.ceil((this.allProducts.length / 6));
+                }
+
                 if(this.products.length > 0){
                     this.renderProd = true;
                 } else{
@@ -106,7 +115,49 @@ export default class CommunitySearchResults extends LightningElement {
                     })
                 );
             })
+
+
+            
     }
+
+    handleSearchKeywords(){
+        this.isLoading = true;
+        getProductList({prodBrand: this.prodBrand, prodModel: this.prodModel, prodFamily: this.prodFamily, offset: this.offset})
+            .then((result)=>{
+
+                this.disabledNext = false;
+                this.disabledPrev = false;
+
+                if(this.offset == 0) {
+                    this.disabledPrev = true;
+                }
+                
+                this.products = result;
+
+                
+
+                if(this.products.length > 0){
+                    this.renderProd = true;
+                } else{
+                    this.renderProd = false;
+                }
+
+                if(this.products.length < 6) {
+                    this.disabledNext = true;
+
+                }
+                this.isLoading = false;
+            })
+            .catch((error)=>{
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: error.body.message,
+                        variant: 'error'
+                    })
+                );
+            })
+
+        }
 
     previous() {
         console.log(this.products.length);
@@ -116,7 +167,7 @@ export default class CommunitySearchResults extends LightningElement {
             this.disabledPrev = true;
         }
         this.currentPage -= 1;
-        this.handleSearchKeyword();
+        this.handleSearchKeywords();
       }
 
       next() {
@@ -125,7 +176,7 @@ export default class CommunitySearchResults extends LightningElement {
         this.disabledPrev = false;
         this.offset += 6;
         this.currentPage += 1;
-        this.handleSearchKeyword();
+        this.handleSearchKeywords();
         
       
       } 
