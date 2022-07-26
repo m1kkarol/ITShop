@@ -2,6 +2,8 @@ import { LightningElement, wire } from 'lwc';
 
 import getOrders from '@salesforce/apex/IT_OrderHistoryController.getOrders';
 
+import emptyOrder from '@salesforce/resourceUrl/EmptyOrder';
+
 import Id from '@salesforce/user/Id';
 
 export default class OrderHistory extends LightningElement {
@@ -9,6 +11,12 @@ export default class OrderHistory extends LightningElement {
     userId = Id;
     orders;
     renderOrders;
+    emptyOrder = emptyOrder;
+    sfdcBaseURL
+
+    renderedCallback(){
+        this.sfdcBaseURL = window.location.origin + '/ithshops/s';
+    }
     
     @wire(getOrders, {userId: '$userId'})
     getOrders({error,data}){
