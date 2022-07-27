@@ -3,6 +3,7 @@ import { LightningElement, api, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getOrderItems from '@salesforce/apex/IT_CaseController.getOrderItems';
 import createCase from '@salesforce/apex/IT_CaseController.createCase';
+import getCaseHistory from '@salesforce/apex/IT_CaseHistoryController.getCaseHistory';
 
 import Id from '@salesforce/user/Id';
 
@@ -65,10 +66,13 @@ export default class NewCaseModal extends LightningElement {
                     });
                     this.dispatchEvent(evt);
 
+                    
+
                     setTimeout(function(){
                         this.closeModal();
                     }.bind(this), 1200);
                     
+
                 })
         } else{
             const evt = new ShowToastEvent({

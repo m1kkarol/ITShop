@@ -20,6 +20,8 @@ export default class OrderDetailsModal extends LightningElement {
     columns = columns;
     orderDetails;
 
+    prodDetails = window.location.origin + '/ithshops/s';
+
     @wire(getOrderItems, {orderId: '$orderId'})
     getOrderDetails({error,data}){
         if(data){

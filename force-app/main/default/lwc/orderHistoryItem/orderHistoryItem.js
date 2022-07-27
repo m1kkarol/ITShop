@@ -30,7 +30,18 @@ export default class OrderHistoryItem extends LightningElement {
     }
     
     handleOpenCaseHistory(){
+        
+
         this.isCaseHistoryOpen = true;
+
+
+        setTimeout(function(){
+            this.template.querySelector('c-case-history').refreshCaseHistory();
+        }.bind(this), 700);
+
+       
+
+        
     }
 
     handleCloseCaseHistory(){

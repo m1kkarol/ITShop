@@ -1,6 +1,8 @@
 import { LightningElement, api, wire } from 'lwc';
 
 import getCaseHistory from '@salesforce/apex/IT_CaseHistoryController.getCaseHistory';
+import { refreshApex } from '@salesforce/apex';
+import { updateRecord } from 'lightning/uiRecordApi';
 
 export default class CaseHistory extends LightningElement {
     
@@ -9,18 +11,22 @@ export default class CaseHistory extends LightningElement {
 
     caseHistory;
     renderHistory;
+    wiredActivities ;
 
     @wire(getCaseHistory, {orderId: '$orderId'})
-    getOrderDetails({error,data}){
+    getCaseHistory(value){
+        
+        this.wiredActivities  = value;
+
+        const {data, error} = value;
+
         if(data){
             this.caseHistory = data;
-            if(this.caseHistory.length > 0){
-                this.renderHistory = true;
-            } else{
-                this.renderHistory = false;
-            }
-           
-            
+        if(this.caseHistory.length > 0){
+            this.renderHistory = true;
+        } else{
+            this.renderHistory = false;
+        }
         } else if(error){
             this.dispatchEvent(
                 new ShowToastEvent({
@@ -35,5 +41,12 @@ export default class CaseHistory extends LightningElement {
         const closeHistoryCase = new CustomEvent('closehistorycase');
         
         this.dispatchEvent(closeHistoryCase);
+    }
+
+    @api
+    refreshCaseHistory(){
+    
+        refreshApex(this.wiredActivities);
+     
     }
 }

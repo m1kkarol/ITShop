@@ -5,40 +5,13 @@
             <header class="slds-modal__header">
     
                 <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Order Details</h2>
-            </header>
-        
-
-
+            </header>       
             <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                 <template if:false={isAdded}>
-                    <table style="width:90%; margin-left: 3%; margin-top: 10%; margin-right: 10%;">
-                        <tr>
-                            <td>
-                                <h1 class="table-column">Image</h1>
-                            </td>
                 
-                            <td>
-                                <h1 class="table-column">Product</h1>
-                            </td>
-                            <td>
-                                <h1 class="table-column">Quantity</h1>
-                            </td>
-                            <td>
-                                <h1 class="table-column">Unit Price</h1>
-                            </td>
-                        </tr>
-                        <template for:each={orderDetails} for:item="item">
-                        <tr key={item.Id} >
-                        
-                            <td><img style="max-width: 150px; max-height: 150px" src={item.displayUrl} /></td>
-                            <td>{item.productName} {item.productModel}</td>
-                            <td>{item.quantity}</td>
-                            <td>{item.unitPrice}€</td>
-                        
-                        </tr>
+                    <template for:each={orderDetails} for:item="item">
+                        <c-order-details-item key={item.Id} item={item}></c-order-details-item>
                     </template>
-                        
-                    </table>
         
                     <div class="slds-modal_footer slds-m-top_medium slds-m-bottom_medium" style="margin-left: 45%"> 
 

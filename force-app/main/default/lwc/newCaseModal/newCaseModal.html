@@ -9,11 +9,13 @@
             </header>
             <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                 <template if:false={isAdded}>
+                    
 
                         <template for:each={orderDetails} for:item="item">
                             
                                 <c-new-case-item key={item.Id}  order-item={item} ></c-new-case-item>
                         </template>
+                    
 
                     <footer style="margin-top: 10px"> 
                         <div class="slds-grid slds-grid_align-center">
