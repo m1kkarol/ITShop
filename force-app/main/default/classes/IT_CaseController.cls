@@ -87,6 +87,7 @@ public with sharing class IT_CaseController {
             newCases.add(productCase);
 
         }
+
         
         
         insert newCases;
