@@ -35,7 +35,7 @@
         <lightning-button class="slds-var-m-left_small" disabled={disabledNext} label="Next" onclick={next}></lightning-button>
     
     </div>
-    <div class="slds-align_absolute-center slds-var-m-top_small"><h1 style="font-size: 18px !important">{currentPage}/{allPages}</h1></div>
+    
 
     <template if:true={renderProd}>
         <div class="container">
@@ -45,11 +45,15 @@
                     <c-product-item product={prod}></c-product-item>
                 </div>
             </template>
+            
         </div>
+        <div class="slds-align_absolute-center slds-var-m-top_small"><h1 style="font-size: 18px !important">{currentPage}/{allPages}</h1></div>
     </template>
    
     <template if:false={renderProd}>
-        
+        <div style="display: flex; justify-content: center">
+            <img style="margin-top: 10px" src={noResults} />
+        </div>
     </template>
 
 </template>

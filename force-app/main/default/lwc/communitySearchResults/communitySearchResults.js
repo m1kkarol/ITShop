@@ -2,6 +2,8 @@ import { LightningElement } from 'lwc';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent'
 import getProductList from '@salesforce/apex/IT_CommunitySearchResultController.getProductList';
 
+import noResults from '@salesforce/resourceUrl/NoResults';
+
 export default class CommunitySearchResults extends LightningElement {
 
 
@@ -16,6 +18,8 @@ export default class CommunitySearchResults extends LightningElement {
     pageForDisplay  = 1;
     disabledPrev = false;
     disabledNext = false;
+    
+    noResults = noResults;
 
     // All selected Id values
   allSelectedRows = new Set()
@@ -87,12 +91,22 @@ export default class CommunitySearchResults extends LightningElement {
                     this.disabledPrev = true;
                 }
                 
+                
                 this.products = result;
+
+                
 
                 if(this.products.length < 6){
                     this.allPages = 1;
                 }else{
                     this.allPages = Math.ceil((this.allProducts.length / 6));
+                }
+
+                if(this.products.length == 0){
+                    this.allPages = 0;
+                    this.currentPage = 0;
+                } else{
+                    this.currentPage = 1;
                 }
 
                 if(this.products.length > 0){
