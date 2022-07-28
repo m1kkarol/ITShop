@@ -1,4 +1,4 @@
-public with sharing class IT_CaseController {
+public without sharing class IT_CaseController {
     @AuraEnabled(cacheable = true)
     public static List<OrderItemDetailsWrapper> getOrderItems(Id orderId) {
         List<OrderItem> orderItems = [SELECT Id, Product2Id, Quantity, UnitPrice FROM OrderItem WHERE OrderId =: orderId];

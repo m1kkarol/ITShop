@@ -41,6 +41,10 @@ export default class ProductCartListItem extends LightningElement {
 
     handleQuantity(event){
         this.productQuantity = event.target.value;
+
+        if(this.productQuantity > 10){
+            this.productQuantity = 10;
+        }
         
         updateQuantity({prodId: this.productCartListItem.Id, quantity: this.productQuantity})
             .then(()=>{

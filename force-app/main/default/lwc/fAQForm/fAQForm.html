@@ -1,0 +1,14 @@
+<template>
+    <div class="faq" style="min-height: 599px; margin-top: 10px">
+        <template for:each={listKnowledgeFAQ} for:item="faq">
+        <ul key={faq.Id} style="margin-top:10px">
+          <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h2>{faq.Parent.Question__c}</h2>
+            <p>{faq.Parent.Answer__c}</p>
+          </li>
+        </ul>
+    </template>
+      </div>
+</template>

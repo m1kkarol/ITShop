@@ -17,11 +17,7 @@ export default class NewCaseItem extends LightningElement {
         ];
     }
 
-    connectedCallback(){
-        if(this.orderItem){
-            console.log(JSON.parse(JSON.stringify(this.orderItem)));
-        }
-    }
+    
 
     handleDescription(event){
         this.description = event.target.value;

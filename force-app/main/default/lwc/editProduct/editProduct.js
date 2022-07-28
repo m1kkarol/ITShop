@@ -64,6 +64,7 @@ export default class EditProduct extends LightningElement {
         getImg({prodId: this.recordId})
             .then((result) =>{
                 this.imageId = result;
+                this.handleImg();
             })
             .catch((error)=>{
 

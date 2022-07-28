@@ -1,6 +1,6 @@
 <template>
     <template if:true={renderOrders}>
-        <div class="slds-scrollable_y container" style="max-height: 600px">
+        <div class="slds-scrollable_y container" style="max-height: 600px; min-height: 500px">
             <template for:each={orders} for:item="order">
                 <div key={order.Id} style="max-width: 800px; margin-left: 130px; margin-bottom: 10px ">
                     <c-order-history-item order={order}></c-order-history-item>
