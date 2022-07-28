@@ -19,7 +19,7 @@ export default class NewCaseModal extends LightningElement {
     getOrderDetails({error,data}){
         if(data){
             this.orderDetails = data;
-            console.log(this.orderDetails);
+            
             
         } else if(error){
             this.dispatchEvent(

@@ -134,6 +134,10 @@ export default class ProductDetails extends LightningElement {
 
     handleQuantity(event){
         this.quantity = event.target.value;
+
+        if(this.quantity > 10){
+            this.quantity = 10;
+        }
     }
     handleProdClick(){
         this.isLoading = true;

@@ -26,7 +26,6 @@ export default class OrderDetailsModal extends LightningElement {
     getOrderDetails({error,data}){
         if(data){
             this.orderDetails = data;
-            console.log(this.orderDetails);
             
         } else if(error){
             this.dispatchEvent(
