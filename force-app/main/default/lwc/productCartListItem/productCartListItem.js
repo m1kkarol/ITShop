@@ -17,10 +17,15 @@ export default class ProductCartListItem extends LightningElement {
     @api productCartListItem
     productQuantity;
     isLoading = false;
+    @api productId;
+    prodUrl;
 
     
     @wire(MessageContext)
     messageContext;
+
+
+
 
 
     handleIncreaseCart() {
@@ -32,7 +37,7 @@ export default class ProductCartListItem extends LightningElement {
 
     connectedCallback(){
         this.productQuantity = this.productCartListItem.Quantity;
-        
+        this.prodUrl = window.location.origin + "/ithshops/s/product/" + this.productCartListItem.Id;
     }
 
     get total(){
@@ -41,7 +46,7 @@ export default class ProductCartListItem extends LightningElement {
 
     handleQuantity(event){
         this.productQuantity = event.target.value;
-
+        console.log(this.productId); 
         if(this.productQuantity > 10){
             this.productQuantity = 10;
         }

@@ -76,6 +76,7 @@ public without sharing class IT_CaseController {
             productCase.Order__c = orderId;
             productCase.Description = description;
             productCase.Reason = caseReason;
+            productCase.Subject = caseReason;
             productCase.Status = 'New';
             productCase.Origin = 'Web';
             productCase.ProductId = productId;

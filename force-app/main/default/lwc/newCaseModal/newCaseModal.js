@@ -49,11 +49,11 @@ export default class NewCaseModal extends LightningElement {
                 caseProd['productId'] = element.orderItem.productId;
                 caseProd['caseReason'] = element.caseReason;
                 caseProd['description'] = element.description;
+                
                 this.caseProducts.push(caseProd);
             }
         });
 
-        console.log(this.caseProducts);
 
         if(this.caseProducts.length > 0){
             this.caseProducts = JSON.parse(JSON.stringify(this.caseProducts));

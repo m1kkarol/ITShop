@@ -22,7 +22,7 @@
 		<section class="cart"> 
             <template for:each={productCartList} for:item="prod">
 			<article class="product" key={prod.Id}>
-                <c-product-cart-list-item product-cart-list-item={prod} onchangesubtotal={handleChangeSubtotal} ondeleteprod={handleDeleteProd}></c-product-cart-list-item>
+                <c-product-cart-list-item product-cart-list-item={prod} product-id={prod.prodId} onchangesubtotal={handleChangeSubtotal} ondeleteprod={handleDeleteProd}></c-product-cart-list-item>
 			</article>
         </template>
 		</section>
